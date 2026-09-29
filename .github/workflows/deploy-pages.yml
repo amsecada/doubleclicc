@@ -1,0 +1,51 @@
+name: Deploy Pages
+
+on:
+  push:
+    branches: [gh_pages]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate release
+    if: github.ref == 'refs/heads/gh_pages'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test the exact release commit
+        run: python3 -m unittest discover -s tests -v
+      - name: Stage public site files
+        run: |
+          mkdir _site
+          cp index.html styles.css main.js .nojekyll _site/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    name: Publish site
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy tested site
+        id: deployment
+        uses: actions/deploy-pages@v4
