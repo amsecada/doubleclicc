@@ -748,13 +748,33 @@ body {
 .map-tag { position: absolute; top: 201px; left: 50%; transform: translateX(-50%) rotate(-4deg); background: #f4f1df; padding: 8px 15px; white-space: nowrap; font-size: 12px; box-shadow: 0 5px 15px #25372820; }
 .clients-heading { align-items: start; } .clients-heading .h2 { font-size: clamp(2rem, 4vw, 3rem); }
 .clients-heading .lede { max-width: 43ch; font-size: 1rem; margin: 0; }
-.client-grid { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.client-carousel { overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--ink-30) transparent; padding: 8px 0; mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent); -webkit-mask-image: linear-gradient(to right, transparent, #000 48px, #000 calc(100% - 48px), transparent); }
+.client-carousel__track { display: flex; width: max-content; }
+.client-grid { list-style: none; display: flex; gap: 12px; padding-right: 12px; flex-shrink: 0; }
+.client-grid .client-card { width: clamp(180px, 20vw, 224px); flex-shrink: 0; }
+.client-carousel.is-ready { overflow-x: hidden; }
+.client-carousel.is-ready .client-carousel__track { animation: client-drift 65s linear infinite; }
+.client-carousel:focus-within .client-carousel__track { animation-play-state: paused; }
+@media (hover: hover) { .client-carousel:hover .client-carousel__track { animation-play-state: paused; } }
+@keyframes client-drift { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .client-carousel.is-ready { overflow-x: auto; }
+  .client-carousel.is-ready .client-carousel__track { animation: none; }
+  .client-grid[aria-hidden="true"] { display: none; }
+}
 .client-card { min-height: 148px; background: #141616; border: 1px solid var(--line-strong); border-radius: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 9px; font-size: clamp(1rem, 1.7vw, 1.5rem); letter-spacing: -.055em; font-weight: 600; }
 .client-card small { display: block; font-size: 9px; letter-spacing: .12em; text-align: center; font-weight: 400; line-height: 1.2; }
 .client-symbol { font-size: 25px; line-height: 1; font-weight: 500; }
 .client-card--accenture .client-symbol { color: #bc9afa; }
 .client-card--verizon .client-symbol, .client-card--databricks .client-symbol { color: #fa796d; }
 .client-card--wipro .client-symbol { color: #94c9ec; font-size: 31px; }
+.client-card--mcafee .client-symbol { color: #fa796d; font-weight: 800; }
+.client-card--duke .client-symbol { color: #94c9ec; font-size: 34px; }
+.client-card--gd .client-symbol { color: #99b1df; font-weight: 700; letter-spacing: -.08em; }
+.client-card--gd > span:last-child { font-size: 12px; letter-spacing: .025em; }
+.client-card--oshkosh .client-symbol { color: #cbe5ac; font-weight: 800; }
+.client-card--oshkosh > span:last-child { letter-spacing: .045em; font-size: 19px; }
+.client-card--kelloggs > span { color: #fa796d; font-family: Georgia, serif; font-weight: 700; font-style: italic; font-size: 32px; }
 .client-card--butler .client-symbol { color: #99b1df; font-family: Georgia, serif; }
 .operator--editorial { grid-template-columns: .7fr 1.3fr; gap: 70px; align-items: center; }
 .operator-mark { aspect-ratio: 1.15; background: #cbe5ac; color: #19352a; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px; }
@@ -763,8 +783,8 @@ body {
 .operator-statement { color: var(--ink-70); font-size: 1rem; max-width: 47ch; }
 .section--final { padding-top: 45px; background: linear-gradient(125deg, #19251a, #0b0c0c 75%); border-top: 1px solid #8cf5b330; }
 @media (max-width: 1050px) { .hero__grid { grid-template-columns: 1fr; } .hero__visual { max-width: 700px; } .project-grid { gap: 14px; } .project-body { padding: 20px; } .project-art { height: 290px; } }
-@media (max-width: 800px) { .project-grid { grid-template-columns: 1fr; } .project-card { display: grid; grid-template-columns: 1fr 1fr; } .project-art { height: 310px; border-bottom: 0; } .client-grid { grid-template-columns: repeat(3, 1fr); } .work-heading, .clients-heading { display: block; } .work-heading .lede, .clients-heading .lede { margin-top: 24px; } .operator--editorial { gap: 35px; grid-template-columns: 1fr; } .operator-mark { max-width: 330px; } }
-@media (max-width: 540px) { .project-card { display: flex; } .project-art { height: 300px; } .project-body { padding: 24px; } .client-grid { grid-template-columns: repeat(2, 1fr); } .client-card:last-child { grid-column: 1 / -1; min-height: 120px; } .hero__title { font-size: clamp(3rem, 11vw, 4.5rem); } .hero__grid { gap: 32px; } .nav { justify-content: space-between; gap: 12px; } }
+@media (max-width: 800px) { .project-grid { grid-template-columns: 1fr; } .project-card { display: grid; grid-template-columns: 1fr 1fr; } .project-art { height: 310px; border-bottom: 0; } .work-heading, .clients-heading { display: block; } .work-heading .lede, .clients-heading .lede { margin-top: 24px; } .operator--editorial { gap: 35px; grid-template-columns: 1fr; } .operator-mark { max-width: 330px; } }
+@media (max-width: 540px) { .project-card { display: flex; } .project-art { height: 300px; } .project-body { padding: 24px; } .hero__title { font-size: clamp(3rem, 11vw, 4.5rem); } .hero__grid { gap: 32px; } .nav { justify-content: space-between; gap: 12px; } }
 @media (prefers-reduced-motion: reduce) { .project-card:hover, .project-card:hover .lesson-sheet, .project-card:hover .signal-note, .project-card:hover .signal-rings > i, .project-card:hover h3 span { transform: none; } .project-card:hover .map-pin { translate: none; } }
 
 /* Page-wide tactile surfaces and a compact, inspectable diagnostic. */
