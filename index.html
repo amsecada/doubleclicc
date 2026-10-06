@@ -291,7 +291,7 @@
       </div>
 
       <h2 class="h2">The work.</h2>
-      <p class="lede">Applied AI, built around the work people do every day.</p>
+      <p class="lede">Tools for planning lessons, following conversations and understanding property assessments.</p>
 
       <div class="deploys deploys--featured">
         <article class="deploy deploy--interactive">
@@ -307,6 +307,34 @@
             <div><dt class="mono">SPEED</dt><dd>60-minute lessons generated in under 60 seconds.</dd></div>
           </dl>
           <button type="button" class="deploy__open" data-open-syllabusy aria-haspopup="dialog" aria-controls="syllabusyModal">Explore Syllabusy <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="deploy deploy--interactive">
+          <header class="deploy__head">
+            <span class="deploy__id mono">PROJECT 002 // SOCIAL ANALYTICS</span>
+            <span class="deploy__state mono">LIVE</span>
+            <h3 class="deploy__title">Smokesignal</h3>
+          </header>
+          <p class="deploy__summary">Spot the smoke before it becomes a fire. Monitor conversations about your brand on Bluesky, understand the mood and catch emerging concerns before they grow.</p>
+          <dl class="deploy__meta">
+            <div><dt class="mono">MONITOR</dt><dd>Follow mentions of your brand, products or topics on Bluesky.</dd></div>
+            <div><dt class="mono">UNDERSTAND</dt><dd>Explore sentiment and engagement to see what’s resonating—and what’s causing friction.</dd></div>
+            <div><dt class="mono">RESPOND</dt><dd>Spot concerns gaining traction so your team can investigate and respond sooner.</dd></div>
+          </dl>
+          <button type="button" class="deploy__open" data-open-smokesignal aria-haspopup="dialog" aria-controls="smokesignalModal">Explore Smokesignal <span aria-hidden="true">→</span></button>
+        </article>
+        <article class="deploy deploy--interactive">
+          <header class="deploy__head">
+            <span class="deploy__id mono">PROJECT 003 // PROPERTY INSIGHTS</span>
+            <span class="deploy__state mono">LIVE</span>
+            <h3 class="deploy__title">Sherwood</h3>
+          </header>
+          <p class="deploy__summary">Your home turf against the king’s tax bill. Free property assessment comparisons help Chicago homeowners get informed and connect with local expertise.</p>
+          <dl class="deploy__meta">
+            <div><dt class="mono">COMPARE</dt><dd>Explore property assessments using nearby comparable properties.</dd></div>
+            <div><dt class="mono">CONNECT</dt><dd>Find local expertise to understand your options.</dd></div>
+            <div><dt class="mono">REACH</dt><dd>Connect Chicagoland attorneys and real estate professionals with homeowners ready for help.</dd></div>
+          </dl>
+          <button type="button" class="deploy__open" data-open-sherwood aria-haspopup="dialog" aria-controls="sherwoodModal">Explore Sherwood <span aria-hidden="true">→</span></button>
         </article>
       </div>
     </section>
@@ -460,9 +488,57 @@
         </dl>
       </div>
       <div class="project__access">
-        <!-- Replace this placeholder with an anchor using the live pilot login URL when available. -->
-        <button type="button" class="btn btn--primary" disabled aria-describedby="syllabusyAccessNote">Pilot login <span aria-hidden="true">→</span></button>
-        <p class="project__note" id="syllabusyAccessNote">Login link coming soon. Pilot access is by invitation only.</p>
+        <a class="btn btn--primary" href="https://syllabusyapp.onrender.com/" aria-describedby="syllabusyAccessNote">Launch Syllabusy <span aria-hidden="true">→</span></a>
+        <p class="project__note" id="syllabusyAccessNote">Pilot access is by invitation only.</p>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="smokesignalModal" aria-labelledby="smokesignalTitle">
+    <div class="modal__panel">
+      <button type="button" class="modal__close mono" data-close-smokesignal aria-label="Close Smokesignal details" autofocus>ESC / CLOSE ✕</button>
+      <span class="modal__tag mono">PROJECT 002 // LIVE</span>
+      <h2 class="modal__title" id="smokesignalTitle">Smokesignal</h2>
+      <p class="modal__sub">Spot the smoke before it becomes a fire.</p>
+      <div class="project__copy">
+        <p>A frustrated customer. A recurring complaint. A conversation starting to spread. Smokesignal helps you follow what people are saying about your brand on Bluesky, so your team can spot emerging concerns and respond before they become bigger problems.</p>
+        <p>Search for your brand, a product or a relevant topic and watch public posts arrive in a live, readable stream. Explore Happy, Sad and Angry sentiment views to understand the mood, then sort by latest received, newest published or most interactions to see which conversations are gaining traction.</p>
+        <p><strong>Get the context to act sooner.</strong> Track activity, sentiment distribution and engagement, then read the posts behind the numbers. See what customers appreciate, investigate what’s frustrating them and give your team a chance to address the smoke before it becomes a fire.</p>
+        <dl class="project__facts">
+          <div><dt class="mono">SOURCE</dt><dd>Public Bluesky conversations</dd></div>
+          <div><dt class="mono">LIVE FEED</dt><dd>Incoming posts as they’re observed</dd></div>
+          <div><dt class="mono">SENTIMENT</dt><dd>Happy, Sad and Angry views</dd></div>
+          <div><dt class="mono">TOPIC PULSE</dt><dd>Activity, sentiment and engagement</dd></div>
+          <div><dt class="mono">STATUS</dt><dd>Live</dd></div>
+        </dl>
+      </div>
+      <div class="project__access">
+        <a class="btn btn--primary" href="https://smokesignals-wgp5.onrender.com/">Launch Smokesignal <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="sherwoodModal" aria-labelledby="sherwoodTitle">
+    <div class="modal__panel">
+      <button type="button" class="modal__close mono" data-close-sherwood aria-label="Close Sherwood details" autofocus>ESC / CLOSE ✕</button>
+      <span class="modal__tag mono">PROJECT 003 // LIVE</span>
+      <h2 class="modal__title" id="sherwoodTitle">Sherwood</h2>
+      <p class="modal__sub">Your home turf against the king’s tax bill.</p>
+      <div class="project__copy">
+        <p>Inspired by Robin Hood’s Sherwood Forest, Sherwood gives Chicago homeowners a place to get informed and take back some power. Start with free property assessment comparisons using nearby comparable properties.</p>
+        <p><strong>Understand how your assessment compares. Explore what comes next.</strong> Connect with local expertise to make sense of the comparisons and understand your options.</p>
+        <p>For attorneys and real estate professionals across greater Chicagoland, Sherwood creates connections with homeowners who are ready for help.</p>
+        <dl class="project__facts">
+          <div><dt class="mono">BUILT FOR</dt><dd>Chicago homeowners</dd></div>
+          <div><dt class="mono">COMPARISONS</dt><dd>Free · Nearby comparable properties</dd></div>
+          <div><dt class="mono">LOCAL EXPERTISE</dt><dd>Attorneys and real estate professionals</dd></div>
+          <div><dt class="mono">PROFESSIONAL NETWORK</dt><dd>Greater Chicagoland</dd></div>
+          <div><dt class="mono">STATUS</dt><dd>Live</dd></div>
+        </dl>
+      </div>
+      <div class="project__access">
+        <a class="btn btn--primary" href="https://amsecada.github.io/sherwood/">Launch Sherwood <span aria-hidden="true">→</span></a>
+        <p class="project__note">Provided by doublecli.cc</p>
       </div>
     </div>
   </dialog>

@@ -129,16 +129,17 @@
     });
   }
 
-  /* Syllabusy project details: native dialog handles Escape and focus return. */
-  var projectModal = document.getElementById('syllabusyModal');
-  if (projectModal) {
-    document.querySelector('[data-open-syllabusy]').addEventListener('click', function () {
+  /* Project details: native dialogs handle Escape and focus return. */
+  ['syllabusy', 'smokesignal', 'sherwood'].forEach(function (project) {
+    var projectModal = document.getElementById(project + 'Modal');
+    if (!projectModal) return;
+    document.querySelector('[data-open-' + project + ']').addEventListener('click', function () {
       if (!projectModal.open) projectModal.showModal();
     });
-    document.querySelector('[data-close-syllabusy]').addEventListener('click', function () {
+    document.querySelector('[data-close-' + project + ']').addEventListener('click', function () {
       projectModal.close();
     });
-  }
+  });
 
   /* ------------------------------------------------------------
      Init
