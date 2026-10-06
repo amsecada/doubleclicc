@@ -2,7 +2,7 @@ name: Deploy Pages
 
 on:
   push:
-    branches: [gh_pages]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,7 @@ concurrency:
 jobs:
   build:
     name: Validate release
-    if: github.ref == 'refs/heads/gh_pages'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
