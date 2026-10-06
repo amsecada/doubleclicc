@@ -26,6 +26,7 @@
       <nav class="nav" aria-label="Primary">
         <a href="#systems" class="nav__link">Systems</a>
         <a href="#work" class="nav__link">Work</a>
+        <a href="#clients" class="nav__link">Clients</a>
         <a href="#about" class="nav__link">About</a>
       </nav>
       <div class="header-right">
@@ -47,8 +48,8 @@
 
       <div class="hero__grid">
         <div class="hero__copy">
-          <h1 class="hero__title">Your business is leaking revenue.</h1>
-          <p class="hero__lede">Doubleclicc builds automation and AI systems that identify and eliminate expensive operational inefficiencies.</p>
+          <h1 class="hero__title">Your business is<br /><span>leaking revenue.</span></h1>
+          <p class="hero__lede">We build automation and AI systems that stop the leaks.</p>
           <div class="hero__actions">
             <button class="btn btn--primary" data-open-diagnostic>
               Run a Revenue Diagnostic
@@ -109,144 +110,24 @@
         <span>DBLCLICC // REV_SYS</span><span class="hero__foot-sep"></span><span>BUILD 01</span><span class="hero__foot-sep"></span><span>DIAGNOSTIC MODE</span>
       </div>
     </section>
-<!-- ============ SYS.02 — ATTACK SURFACE ============ -->
-    <section class="section" id="leaks">
-      <div class="section-label" aria-hidden="true">
-        <span class="mono">SYS.02</span><span class="section-label__rule"></span><span class="mono">ATTACK SURFACE</span>
+<!-- ============ SYS.02 — DIAGNOSTIC ============ -->
+    <section class="section diagnostic-section" id="leaks">
+      <div class="section-label" aria-hidden="true"><span class="mono">SYS.02</span><span class="section-label__rule"></span><span class="mono">FIND THE CONSTRAINT</span></div>
+      <div class="diagnostic-heading" id="diagnostic"><h2 class="h2">Small failures.<br /><span>Real revenue leaks.</span></h2><p class="lede">Before we automate, we trace how work moves through your business. Find the broken handoff. Fix what matters.</p></div>
+      <div class="diagnostic-table">
+        <div class="diagnostic-table__head mono" aria-hidden="true"><span>WHERE IT LEAKS</span><span>WHAT WE LOOK FOR</span><span>INSPECT ↓</span></div>
+        <details class="diagnostic-row"><summary><span class="diagnostic-row__name"><span class="mono diagnostic-row__number">01</span><strong>Lead response</strong></span><span class="diagnostic-row__summary">A lead arrives tonight. The reply waits until tomorrow.</span><span class="diagnostic-row__flag mono">DELAYED<span class="diagnostic-row__plus" aria-hidden="true">+</span></span></summary><div class="diagnostic-row__detail"><span class="mono">THE DIAGNOSTIC</span><p>Trace the path from first contact to first response.</p></div></details>
+        <details class="diagnostic-row"><summary><span class="diagnostic-row__name"><span class="mono diagnostic-row__number">02</span><strong>Follow-up</strong></span><span class="diagnostic-row__summary">The next step depends on someone remembering.</span><span class="diagnostic-row__flag mono">MANUAL<span class="diagnostic-row__plus" aria-hidden="true">+</span></span></summary><div class="diagnostic-row__detail"><span class="mono">THE DIAGNOSTIC</span><p>Find the handoffs that need a reliable trigger.</p></div></details>
+        <details class="diagnostic-row"><summary><span class="diagnostic-row__name"><span class="mono diagnostic-row__number">03</span><strong>Disconnected systems</strong></span><span class="diagnostic-row__summary">Your CRM, inbox and calendar tell different stories.</span><span class="diagnostic-row__flag mono">UNSYNCED<span class="diagnostic-row__plus" aria-hidden="true">+</span></span></summary><div class="diagnostic-row__detail"><span class="mono">THE DIAGNOSTIC</span><p>Find where information stops moving.</p></div></details>
+        <details class="diagnostic-row"><summary><span class="diagnostic-row__name"><span class="mono diagnostic-row__number">04</span><strong>Repetitive admin</strong></span><span class="diagnostic-row__summary">Skilled people spend their day moving information.</span><span class="diagnostic-row__flag mono">DUPLICATED<span class="diagnostic-row__plus" aria-hidden="true">+</span></span></summary><div class="diagnostic-row__detail"><span class="mono">THE DIAGNOSTIC</span><p>Identify the work your systems can take off their plate.</p></div></details>
+        <details class="diagnostic-row"><summary><span class="diagnostic-row__name"><span class="mono diagnostic-row__number">05</span><strong>Dormant opportunities</strong></span><span class="diagnostic-row__summary">Old leads sit untouched while new ones get all the attention.</span><span class="diagnostic-row__flag mono">IDLE<span class="diagnostic-row__plus" aria-hidden="true">+</span></span></summary><div class="diagnostic-row__detail"><span class="mono">THE DIAGNOSTIC</span><p>Find the customers and conversations worth revisiting.</p></div></details>
       </div>
-
-      <h2 class="h2">Revenue rarely disappears all at once.</h2>
-      <p class="lede">It leaks through dozens of small failures.</p>
-
-      <ul class="leaks">
-        <li class="leak" tabindex="0">
-          <span class="leak__index mono" aria-hidden="true">01</span>
-          <div class="leak__body">
-            <h3 class="leak__title">Slow lead response</h3>
-            <p class="leak__desc">Someone fills out a form at 7:13 PM. Nobody responds until tomorrow.</p>
-          </div>
-          <span class="leak__status mono" aria-hidden="true">
-            <span class="dot dot--amber"></span>
-            <span class="leak__status-a">UNRESOLVED</span>
-            <span class="leak__status-b">DIAGNOSTIC AVAILABLE</span>
-          </span>
-        </li>
-        <li class="leak" tabindex="0">
-          <span class="leak__index mono" aria-hidden="true">02</span>
-          <div class="leak__body">
-            <h3 class="leak__title">Manual follow-up</h3>
-            <p class="leak__desc">Your sales process depends on someone remembering what to do next.</p>
-          </div>
-          <span class="leak__status mono" aria-hidden="true">
-            <span class="dot dot--amber"></span>
-            <span class="leak__status-a">UNRESOLVED</span>
-            <span class="leak__status-b">DIAGNOSTIC AVAILABLE</span>
-          </span>
-        </li>
-        <li class="leak" tabindex="0">
-          <span class="leak__index mono" aria-hidden="true">03</span>
-          <div class="leak__body">
-            <h3 class="leak__title">Disconnected systems</h3>
-            <p class="leak__desc">Your CRM, inbox, calendar, quoting software and employees all know different things.</p>
-          </div>
-          <span class="leak__status mono" aria-hidden="true">
-            <span class="dot dot--red"></span>
-            <span class="leak__status-a">UNRESOLVED</span>
-            <span class="leak__status-b">DIAGNOSTIC AVAILABLE</span>
-          </span>
-        </li>
-        <li class="leak" tabindex="0">
-          <span class="leak__index mono" aria-hidden="true">04</span>
-          <div class="leak__body">
-            <h3 class="leak__title">Repetitive administration</h3>
-            <p class="leak__desc">Skilled employees spend hours moving information between systems.</p>
-          </div>
-          <span class="leak__status mono" aria-hidden="true">
-            <span class="dot dot--amber"></span>
-            <span class="leak__status-a">UNRESOLVED</span>
-            <span class="leak__status-b">DIAGNOSTIC AVAILABLE</span>
-          </span>
-        </li>
-        <li class="leak" tabindex="0">
-          <span class="leak__index mono" aria-hidden="true">05</span>
-          <div class="leak__body">
-            <h3 class="leak__title">Dormant opportunities</h3>
-            <p class="leak__desc">Old leads and customers sit untouched because nobody has time to revisit them.</p>
-          </div>
-          <span class="leak__status mono" aria-hidden="true">
-            <span class="dot dot--amber"></span>
-            <span class="leak__status-a">UNRESOLVED</span>
-            <span class="leak__status-b">DIAGNOSTIC AVAILABLE</span>
-          </span>
-        </li>
-      </ul>
+      <p class="diagnostic-caption mono">Follow the work. Find the friction.</p>
     </section>
-
-<!-- ============ SYS.03 — DIAGNOSTIC ============ -->
-    <section class="section" id="diagnostic">
-      <div class="section-label" aria-hidden="true">
-        <span class="mono">SYS.03</span><span class="section-label__rule"></span><span class="mono">DIAGNOSTIC</span>
-      </div>
-
-      <h2 class="h2">Before we automate anything, we find the constraint.</h2>
-      <p class="lede">Doubleclicc examines how work and revenue actually move through your company.</p>
-
-      <div class="arch">
-        <div class="arch__flow">
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">TRAFFIC</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--ok mono"><span class="dot dot--green"></span>CONNECTED</span>
-          </div>
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">LEAD CAPTURE</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--warn mono"><span class="dot dot--amber"></span>MANUAL</span>
-          </div>
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">CRM</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--warn mono"><span class="dot dot--amber"></span>UNTRACKED</span>
-          </div>
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">SALES</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--warn mono"><span class="dot dot--amber"></span>DELAYED</span>
-          </div>
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">ESTIMATE</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--bad mono"><span class="dot dot--red"></span>DISCONNECTED</span>
-          </div>
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">FOLLOW-UP</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--warn mono"><span class="dot dot--amber"></span>MANUAL</span>
-          </div>
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">CUSTOMER</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--ok mono"><span class="dot dot--green"></span>CONNECTED</span>
-          </div>
-          <div class="arch__row" data-reveal>
-            <span class="arch__node mono">REACTIVATION</span>
-            <span class="arch__line" aria-hidden="true"></span>
-            <span class="arch__status arch__status--warn mono"><span class="dot dot--amber"></span>IDLE</span>
-          </div>
-        </div>
-
-        <aside class="arch__overlay mono" aria-hidden="true">
-          <span class="arch__overlay-title">SYSTEMS</span>
-          <span>PHONE</span><span>EMAIL</span><span>SMS</span><span>CALENDAR</span><span>INVOICING</span><span>AI</span><span>HUMANS</span>
-        </aside>
-      </div>
-
-      <p class="arch__note mono" aria-hidden="true">SIGNAL: SYSTEMS ARE DESCRIBED, NOT MEASURED.</p>
-    </section>
-<!-- ============ SYS.04 — PATCH ============ -->
+<!-- ============ SYS.03 — PATCH ============ -->
     <section class="section" id="systems">
       <div class="section-label" aria-hidden="true">
-        <span class="mono">SYS.04</span><span class="section-label__rule"></span><span class="mono">PATCH</span>
+        <span class="mono">SYS.03</span><span class="section-label__rule"></span><span class="mono">PATCH</span>
       </div>
 
       <h2 class="h2">Then we fix what matters.</h2>
@@ -258,25 +139,18 @@
           <ul class="patch__list">
             <li>Instant lead routing</li>
             <li>Automated follow-up</li>
-            <li>CRM synchronization</li>
             <li>Customer reactivation</li>
-            <li>Scheduling</li>
             <li>Quoting workflows</li>
-            <li>Reporting</li>
-            <li>Internal notifications</li>
           </ul>
         </div>
         <div class="patch__col">
           <h3 class="patch__title"><span class="patch__tag mono" aria-hidden="true">02</span> AI systems</h3>
-          <p class="patch__desc">Deploy intelligent systems where judgment, language or large amounts of information previously required manual effort.</p>
+          <p class="patch__desc">Put AI to work on research, conversations and documents.</p>
           <ul class="patch__list">
             <li>Lead qualification</li>
-            <li>Sales assistance</li>
             <li>Internal knowledge</li>
             <li>Customer communication</li>
-            <li>Research</li>
             <li>Document processing</li>
-            <li>Operational agents</li>
           </ul>
         </div>
       </div>
@@ -284,85 +158,66 @@
       <p class="patch__note">Less busywork. More revenue. Nothing automated for its own sake.</p>
     </section>
 
-    <!-- ============ SYS.05 — DEPLOYMENTS / PROOF ============ -->
+    <!-- ============ SYS.04 — DEPLOYMENTS / PROOF ============ -->
     <section class="section" id="work">
       <div class="section-label" aria-hidden="true">
-        <span class="mono">SYS.05</span><span class="section-label__rule"></span><span class="mono">DEPLOYMENTS</span>
+        <span class="mono">SYS.04</span><span class="section-label__rule"></span><span class="mono">DEPLOYMENTS</span>
       </div>
 
-      <h2 class="h2">The work.</h2>
-      <p class="lede">Tools for planning lessons, following conversations and understanding property assessments.</p>
-
-      <div class="deploys deploys--featured">
-        <article class="deploy deploy--interactive">
-          <header class="deploy__head">
-            <span class="deploy__id mono">PROJECT 001 // EDUCATION</span>
-            <span class="deploy__state mono">ACTIVE PILOT // INVITE ONLY</span>
-            <h3 class="deploy__title">Syllabusy</h3>
-          </header>
-          <p class="deploy__summary">AI-augmented lesson generation for K–5 teachers. Built as a prototype for the University of Miami, now in use by pilot users.</p>
-          <dl class="deploy__meta">
-            <div><dt class="mono">INPUT</dt><dd>Grade level, subject, lesson name and additional context.</dd></div>
-            <div><dt class="mono">OUTPUT</dt><dd>A comprehensive 60-minute lesson plan.</dd></div>
-            <div><dt class="mono">SPEED</dt><dd>60-minute lessons generated in under 60 seconds.</dd></div>
-          </dl>
-          <button type="button" class="deploy__open" data-open-syllabusy aria-haspopup="dialog" aria-controls="syllabusyModal">Explore Syllabusy <span aria-hidden="true">→</span></button>
-        </article>
-        <article class="deploy deploy--interactive">
-          <header class="deploy__head">
-            <span class="deploy__id mono">PROJECT 002 // SOCIAL ANALYTICS</span>
-            <span class="deploy__state mono">LIVE</span>
-            <h3 class="deploy__title">Smokesignal</h3>
-          </header>
-          <p class="deploy__summary">Spot the smoke before it becomes a fire. Monitor conversations about your brand on Bluesky, understand the mood and catch emerging concerns before they grow.</p>
-          <dl class="deploy__meta">
-            <div><dt class="mono">MONITOR</dt><dd>Follow mentions of your brand, products or topics on Bluesky.</dd></div>
-            <div><dt class="mono">UNDERSTAND</dt><dd>Explore sentiment and engagement to see what’s resonating—and what’s causing friction.</dd></div>
-            <div><dt class="mono">RESPOND</dt><dd>Spot concerns gaining traction so your team can investigate and respond sooner.</dd></div>
-          </dl>
-          <button type="button" class="deploy__open" data-open-smokesignal aria-haspopup="dialog" aria-controls="smokesignalModal">Explore Smokesignal <span aria-hidden="true">→</span></button>
-        </article>
-        <article class="deploy deploy--interactive">
-          <header class="deploy__head">
-            <span class="deploy__id mono">PROJECT 003 // PROPERTY INSIGHTS</span>
-            <span class="deploy__state mono">LIVE</span>
-            <h3 class="deploy__title">Sherwood</h3>
-          </header>
-          <p class="deploy__summary">Your home turf against the king’s tax bill. Free property assessment comparisons help Chicago homeowners get informed and connect with local expertise.</p>
-          <dl class="deploy__meta">
-            <div><dt class="mono">COMPARE</dt><dd>Explore property assessments using nearby comparable properties.</dd></div>
-            <div><dt class="mono">CONNECT</dt><dd>Find local expertise to understand your options.</dd></div>
-            <div><dt class="mono">REACH</dt><dd>Connect Chicagoland attorneys and real estate professionals with homeowners ready for help.</dd></div>
-          </dl>
-          <button type="button" class="deploy__open" data-open-sherwood aria-haspopup="dialog" aria-controls="sherwoodModal">Explore Sherwood <span aria-hidden="true">→</span></button>
-        </article>
+      <div class="work-heading"><h2 class="h2">Less theory.<br /><span>More shipped.</span></h2></div>
+      <div class="project-grid">
+        <a class="project-card project-card--syllabusy" href="https://syllabusyapp.onrender.com/" target="new" rel="noopener noreferrer" aria-label="Visit Syllabusy — invite-only pilot">
+          <div class="project-art lesson-art" aria-hidden="true">
+            <span class="art-label mono">01 / EDUCATION</span>
+            <div class="lesson-sheet lesson-sheet--back"></div>
+            <div class="lesson-sheet"><span class="mono">TODAY’S LESSON</span><strong>Big ideas.<br />Little lessons.</strong><div class="lesson-lines"><i></i><i></i><i></i></div><span class="lesson-stamp">60 min<br /><small>READY TO TEACH</small></span></div>
+            <span class="art-caption mono">A little context. A complete lesson.</span>
+          </div>
+          <div class="project-body"><span class="project-status mono">INVITE-ONLY PILOT</span><h3>Syllabusy <span aria-hidden="true">↗</span></h3><p>A 60-minute lesson plan in under 60 seconds. Built for K–5 teachers, prototyped for the University of Miami.</p><span class="project-link">Visit Syllabusy <span aria-hidden="true">→</span></span></div>
+        </a>
+        <a class="project-card project-card--smoke" href="https://smokesignals-wgp5.onrender.com/" target="new" rel="noopener noreferrer" aria-label="Visit Smokesignal">
+          <div class="project-art signal-art" aria-hidden="true">
+            <span class="art-label mono">02 / SOCIAL ANALYTICS</span>
+            <div class="signal-rings"><i></i><i></i><i></i><span class="signal-core">S</span></div>
+            <span class="signal-note signal-note--one">Something’s off.</span><span class="signal-note signal-note--two"><i></i> Check the conversation.</span>
+            <span class="art-caption mono">Catch it before it escalates.</span>
+          </div>
+          <div class="project-body"><span class="project-status mono">LIVE / BLUESKY</span><h3>Smokesignal <span aria-hidden="true">↗</span></h3><p>Spot the smoke before it becomes a fire. Follow brand conversations and emerging concerns on Bluesky.</p><span class="project-link">Visit Smokesignal <span aria-hidden="true">→</span></span></div>
+        </a>
+        <a class="project-card project-card--sherwood" href="https://amsecada.github.io/sherwood/" target="new" rel="noopener noreferrer" aria-label="Visit Sherwood">
+          <div class="project-art map-art" aria-hidden="true">
+            <span class="art-label mono">03 / PROPERTY INSIGHTS</span>
+            <div class="map-blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="map-pin"><span>⌂</span></div><span class="map-tag">Know your home turf.</span>
+            <span class="art-caption mono">Chicago / Block by block</span>
+          </div>
+          <div class="project-body"><span class="project-status mono">LIVE / CHICAGOLAND</span><h3>Sherwood <span aria-hidden="true">↗</span></h3><p>Your home turf against the king’s tax bill. Compare property assessments and connect with local expertise.</p><span class="project-link">Visit Sherwood <span aria-hidden="true">→</span></span></div>
+        </a>
       </div>
     </section>
-<!-- ============ SYS.06 — OPERATOR ============ -->
+    <section class="section clients-section" id="clients">
+      <div class="section-label" aria-hidden="true"><span class="mono">SYS.05</span><span class="section-label__rule"></span><span class="mono">EXPERIENCE</span></div>
+      <div class="clients-heading"><h2 class="h2">Clients &amp; experience.</h2><p class="lede">Organizations where our founder’s work has been used—across prior roles and engagements.</p></div>
+      <ul class="client-grid" aria-label="Organizations where our founder’s work has been used">
+        <li class="client-card client-card--accenture"><span class="client-symbol" aria-hidden="true">&gt;</span><span>accenture</span></li>
+        <li class="client-card client-card--verizon"><span class="client-symbol" aria-hidden="true">✓</span><span>verizon<small>wireless</small></span></li>
+        <li class="client-card client-card--wipro"><span class="client-symbol" aria-hidden="true">◌</span><span>wipro</span></li>
+        <li class="client-card client-card--butler"><span class="client-symbol" aria-hidden="true">B</span><span>Butler<small>UNIVERSITY</small></span></li>
+        <li class="client-card client-card--databricks"><span class="client-symbol" aria-hidden="true">≋</span><span>databricks</span></li>
+      </ul>
+    </section>
+<!-- ============ SYS.05 — OPERATOR ============ -->
     <section class="section" id="about">
       <div class="section-label" aria-hidden="true">
         <span class="mono">SYS.06</span><span class="section-label__rule"></span><span class="mono">OPERATOR</span>
       </div>
 
-      <div class="operator">
-        <div class="operator__portrait" aria-hidden="true">
-          <span class="operator__crosshair"></span>
-          <span class="operator__placeholder mono">PORTRAIT<br />[ 4 : 5 ]</span>
-        </div>
-        <div class="operator__copy">
-          <h2 class="h2">Built by an operator.</h2>
-          <p class="lede">[ Founder story — short. Who you are, what you've run, and why you now apply enterprise systems thinking to small and mid-size businesses. ]</p>
-          <ul class="operator__list">
-            <li><span class="operator__k mono">BACKGROUND</span><span>[ enterprise systems ]</span></li>
-            <li><span class="operator__k mono">PREVIOUS</span><span>[ organizations ]</span></li>
-            <li><span class="operator__k mono">SELECTED</span><span>[ experience ]</span></li>
-            <li><span class="operator__k mono">PHILOSOPHY</span><span>[ systems thinking, applied to SMBs ]</span></li>
-          </ul>
-        </div>
+      <div class="operator operator--editorial">
+        <div class="operator-mark" aria-hidden="true"><span>//</span><small class="mono">THE PERSON BEHIND THE SYSTEMS</small></div>
+        <div class="operator__copy"><h2 class="h2">The experience is personal.</h2><p class="lede">Doubleclicc is built on our founder’s hands-on work across enterprise organizations and independent products.</p><p class="operator-statement">That same systems thinking, applied to your business. Find the constraint. Build what helps. Make it work.</p></div>
       </div>
     </section>
 
-    <!-- ============ SYS.07 — PROTOCOL ============ -->
+    <!-- ============ SYS.06 — PROTOCOL ============ -->
     <section class="section" id="method">
       <div class="section-label" aria-hidden="true">
         <span class="mono">SYS.07</span><span class="section-label__rule"></span><span class="mono">PROTOCOL</span>
@@ -401,7 +256,7 @@
       <p class="protocol__note">We don't automate things simply because they can be automated. We fix constraints that matter.</p>
     </section>
 
-    <!-- ============ SYS.08 — RUN DIAGNOSTIC ============ -->
+    <!-- ============ SYS.07 — RUN DIAGNOSTIC ============ -->
     <section class="section section--final" id="diagnose">
       <div class="section-label" aria-hidden="true">
         <span class="mono">SYS.08</span><span class="section-label__rule"></span><span class="mono">RUN DIAGNOSTIC</span>
@@ -465,80 +320,6 @@
       <div class="modal__done" id="diagDone" hidden>
         <span class="modal__done-label mono">TRANSMISSION RECEIVED</span>
         <p class="modal__done-msg">Thanks — we'll take a look and get back to you shortly.</p>
-      </div>
-    </div>
-  </dialog>
-
-  <dialog class="modal" id="syllabusyModal" aria-labelledby="syllabusyTitle">
-    <div class="modal__panel">
-      <button type="button" class="modal__close mono" data-close-syllabusy aria-label="Close Syllabusy details" autofocus>ESC / CLOSE ✕</button>
-      <span class="modal__tag mono">PROJECT 001 // INVITE-ONLY PILOT</span>
-      <h2 class="modal__title" id="syllabusyTitle">Syllabusy</h2>
-      <p class="modal__sub">A lesson starts with your context.</p>
-      <div class="project__copy">
-        <p>I was asked to build a prototype for the University of Miami. The result is Syllabusy: AI-augmented lesson generation for K–5 teachers, now in an invite-only pilot with active users.</p>
-        <p>Teachers provide the grade level, subject, lesson name and additional context. Syllabusy uses those inputs to generate a comprehensive 60-minute lesson plan.</p>
-        <p><strong>A 60-minute lesson, generated in under 60 seconds.</strong> Pilot users have highlighted the generation speed as particularly impressive.</p>
-        <dl class="project__facts">
-          <div><dt class="mono">MY ROLE</dt><dd>Operator &amp; prototype builder</dd></div>
-          <div><dt class="mono">BUILT FOR</dt><dd>K–5 teachers</dd></div>
-          <div><dt class="mono">LESSON LENGTH</dt><dd>60 minutes</dd></div>
-          <div><dt class="mono">GENERATION TIME</dt><dd>Under 60 seconds</dd></div>
-          <div><dt class="mono">STATUS</dt><dd>Active pilot · Invite only</dd></div>
-        </dl>
-      </div>
-      <div class="project__access">
-        <a class="btn btn--primary" href="https://syllabusyapp.onrender.com/" aria-describedby="syllabusyAccessNote">Launch Syllabusy <span aria-hidden="true">→</span></a>
-        <p class="project__note" id="syllabusyAccessNote">Pilot access is by invitation only.</p>
-      </div>
-    </div>
-  </dialog>
-
-  <dialog class="modal" id="smokesignalModal" aria-labelledby="smokesignalTitle">
-    <div class="modal__panel">
-      <button type="button" class="modal__close mono" data-close-smokesignal aria-label="Close Smokesignal details" autofocus>ESC / CLOSE ✕</button>
-      <span class="modal__tag mono">PROJECT 002 // LIVE</span>
-      <h2 class="modal__title" id="smokesignalTitle">Smokesignal</h2>
-      <p class="modal__sub">Spot the smoke before it becomes a fire.</p>
-      <div class="project__copy">
-        <p>A frustrated customer. A recurring complaint. A conversation starting to spread. Smokesignal helps you follow what people are saying about your brand on Bluesky, so your team can spot emerging concerns and respond before they become bigger problems.</p>
-        <p>Search for your brand, a product or a relevant topic and watch public posts arrive in a live, readable stream. Explore Happy, Sad and Angry sentiment views to understand the mood, then sort by latest received, newest published or most interactions to see which conversations are gaining traction.</p>
-        <p><strong>Get the context to act sooner.</strong> Track activity, sentiment distribution and engagement, then read the posts behind the numbers. See what customers appreciate, investigate what’s frustrating them and give your team a chance to address the smoke before it becomes a fire.</p>
-        <dl class="project__facts">
-          <div><dt class="mono">SOURCE</dt><dd>Public Bluesky conversations</dd></div>
-          <div><dt class="mono">LIVE FEED</dt><dd>Incoming posts as they’re observed</dd></div>
-          <div><dt class="mono">SENTIMENT</dt><dd>Happy, Sad and Angry views</dd></div>
-          <div><dt class="mono">TOPIC PULSE</dt><dd>Activity, sentiment and engagement</dd></div>
-          <div><dt class="mono">STATUS</dt><dd>Live</dd></div>
-        </dl>
-      </div>
-      <div class="project__access">
-        <a class="btn btn--primary" href="https://smokesignals-wgp5.onrender.com/">Launch Smokesignal <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </dialog>
-
-  <dialog class="modal" id="sherwoodModal" aria-labelledby="sherwoodTitle">
-    <div class="modal__panel">
-      <button type="button" class="modal__close mono" data-close-sherwood aria-label="Close Sherwood details" autofocus>ESC / CLOSE ✕</button>
-      <span class="modal__tag mono">PROJECT 003 // LIVE</span>
-      <h2 class="modal__title" id="sherwoodTitle">Sherwood</h2>
-      <p class="modal__sub">Your home turf against the king’s tax bill.</p>
-      <div class="project__copy">
-        <p>Inspired by Robin Hood’s Sherwood Forest, Sherwood gives Chicago homeowners a place to get informed and take back some power. Start with free property assessment comparisons using nearby comparable properties.</p>
-        <p><strong>Understand how your assessment compares. Explore what comes next.</strong> Connect with local expertise to make sense of the comparisons and understand your options.</p>
-        <p>For attorneys and real estate professionals across greater Chicagoland, Sherwood creates connections with homeowners who are ready for help.</p>
-        <dl class="project__facts">
-          <div><dt class="mono">BUILT FOR</dt><dd>Chicago homeowners</dd></div>
-          <div><dt class="mono">COMPARISONS</dt><dd>Free · Nearby comparable properties</dd></div>
-          <div><dt class="mono">LOCAL EXPERTISE</dt><dd>Attorneys and real estate professionals</dd></div>
-          <div><dt class="mono">PROFESSIONAL NETWORK</dt><dd>Greater Chicagoland</dd></div>
-          <div><dt class="mono">STATUS</dt><dd>Live</dd></div>
-        </dl>
-      </div>
-      <div class="project__access">
-        <a class="btn btn--primary" href="https://amsecada.github.io/sherwood/">Launch Sherwood <span aria-hidden="true">→</span></a>
-        <p class="project__note">Provided by doublecli.cc</p>
       </div>
     </div>
   </dialog>

@@ -29,8 +29,8 @@
   var navStatus = document.getElementById('navStatus');
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
   var sectionIndex = {
-    hero: '01', leaks: '02', diagnostic: '03', systems: '04',
-    work: '05', about: '06', method: '07', diagnose: '08'
+    hero: '01', leaks: '02', systems: '03',
+    work: '04', clients: '05', about: '06', method: '07', diagnose: '08'
   };
   var ticking = false;
 
@@ -129,15 +129,14 @@
     });
   }
 
-  /* Project details: native dialogs handle Escape and focus return. */
-  ['syllabusy', 'smokesignal', 'sherwood'].forEach(function (project) {
-    var projectModal = document.getElementById(project + 'Modal');
-    if (!projectModal) return;
-    document.querySelector('[data-open-' + project + ']').addEventListener('click', function () {
-      if (!projectModal.open) projectModal.showModal();
-    });
-    document.querySelector('[data-close-' + project + ']').addEventListener('click', function () {
-      projectModal.close();
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('.pipeline, .patch__col, .client-card, .protocol__step, .operator-mark').forEach(function (surface) {
+    surface.classList.add('pointer-surface');
+    surface.addEventListener('pointermove', function (event) {
+      if (reduceMotion || !finePointer.matches) return;
+      var rect = surface.getBoundingClientRect();
+      surface.style.setProperty('--pointer-x', (event.clientX - rect.left) + 'px');
+      surface.style.setProperty('--pointer-y', (event.clientY - rect.top) + 'px');
     });
   });
 
