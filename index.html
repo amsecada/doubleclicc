@@ -27,7 +27,7 @@
         <a href="#systems" class="nav__link">Systems</a>
         <a href="#work" class="nav__link">Work</a>
         <a href="#clients" class="nav__link">Clients</a>
-        <a href="#about" class="nav__link">About</a>
+        <a href="#gray-papers" class="nav__link">Gray papers</a>
       </nav>
       <div class="header-right">
         <span class="status" aria-hidden="true">
@@ -205,16 +205,34 @@
         <li class="client-card client-card--databricks"><span class="client-symbol" aria-hidden="true">≋</span><span>databricks</span></li>
       </ul>
     </section>
-<!-- ============ SYS.05 — OPERATOR ============ -->
-    <section class="section" id="about">
-      <div class="section-label" aria-hidden="true">
-        <span class="mono">SYS.06</span><span class="section-label__rule"></span><span class="mono">OPERATOR</span>
+    <!-- ============ SYS.06 — GRAY PAPERS ============ -->
+    <section class="section papers-section" id="gray-papers">
+      <div class="section-label" aria-hidden="true"><span class="mono">SYS.06</span><span class="section-label__rule"></span><span class="mono">FIELD NOTES</span></div>
+      <div class="papers-heading"><h2 class="h2">Gray papers.<br /><span>A little less formal.<br />A little more useful.</span></h2><p class="lede">Not quite white papers. Practical perspectives on the systems, handoffs, and small decisions that help a business work better.</p></div>
+      <div class="papers-grid">
+        <button class="paper-card" type="button" data-open-paper="paper-01" aria-haspopup="dialog">
+          <span class="paper-card__meta mono"><span>GP / 01</span><span>FIELD NOTE</span></span>
+          <span class="paper-card__category mono">LEAD RESPONSE</span>
+          <span class="paper-card__title">The cost of “we’ll reply tomorrow.”</span>
+          <span class="paper-card__summary">A closer look at the gap between a new inquiry and a real conversation.</span>
+          <span class="paper-card__footer mono">Read paper <span aria-hidden="true">↗</span></span>
+        </button>
+        <button class="paper-card" type="button" data-open-paper="paper-02" aria-haspopup="dialog">
+          <span class="paper-card__meta mono"><span>GP / 02</span><span>FIELD NOTE</span></span>
+          <span class="paper-card__category mono">SYSTEMS &amp; HANDOFFS</span>
+          <span class="paper-card__title">Your tools work. Do they work together?</span>
+          <span class="paper-card__summary">Follow the information that falls between your CRM, inbox, and calendar.</span>
+          <span class="paper-card__footer mono">Read paper <span aria-hidden="true">↗</span></span>
+        </button>
+        <button class="paper-card" type="button" data-open-paper="paper-03" aria-haspopup="dialog">
+          <span class="paper-card__meta mono"><span>GP / 03</span><span>FIELD NOTE</span></span>
+          <span class="paper-card__category mono">PRACTICAL AUTOMATION</span>
+          <span class="paper-card__title">Before you automate, find the friction.</span>
+          <span class="paper-card__summary">A field note on choosing the small fix that makes the biggest difference.</span>
+          <span class="paper-card__footer mono">Read paper <span aria-hidden="true">↗</span></span>
+        </button>
       </div>
-
-      <div class="operator operator--editorial">
-        <div class="operator-mark" aria-hidden="true"><span>//</span><small class="mono">THE PERSON BEHIND THE SYSTEMS</small></div>
-        <div class="operator__copy"><h2 class="h2">The experience is personal.</h2><p class="lede">Doubleclicc is built on our founder’s hands-on work across enterprise organizations and independent products.</p><p class="operator-statement">That same systems thinking, applied to your business. Find the constraint. Build what helps. Make it work.</p></div>
-      </div>
+      <p class="papers-caption mono">Working ideas. Worth a closer look.</p>
     </section>
 
     <!-- ============ SYS.06 — PROTOCOL ============ -->
@@ -283,6 +301,69 @@
       <button class="footer__cta text-link" data-open-diagnostic>Run diagnostic <span aria-hidden="true">→</span></button>
     </div>
   </footer>
+
+<dialog class="modal paper-modal" id="paper-01" aria-labelledby="paper-title-01">
+  <article class="modal__panel paper-reader">
+    <button type="button" class="modal__close mono" data-close-paper autofocus aria-label="Close gray paper">ESC / CLOSE ✕</button>
+    <p class="paper-reader__tag mono">GRAY PAPERS / 01 — LEAD RESPONSE</p>
+    <h2 class="modal__title" id="paper-title-01">The cost of “we’ll reply tomorrow.”</h2>
+    <p class="paper-reader__intro">A closer look at the gap between a new inquiry and a real conversation.</p>
+    <div class="paper-reader__body">
+      <p class="paper-reader__draft mono">Sample paper / placeholder copy</p>
+      <h3>The observation</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat, risus sit amet facilisis interdum, justo ligula sollicitudin neque, vitae elementum sapien velit a nulla. Sed euismod mi at arcu interdum, ac pellentesque ipsum consequat.</p>
+      <p>Praesent vitae metus eu nisl tincidunt tincidunt. Aliquam erat volutpat. Donec quis magna at nulla posuere dignissim. Curabitur malesuada, est non fermentum volutpat, augue nibh tincidunt lectus, in viverra velit erat id sapien.</p>
+      <h3>A closer look</h3>
+      <p>Nullam commodo lorem sed mi faucibus, vitae suscipit sapien feugiat. Mauris porttitor sem vel sapien ultrices, eu tincidunt eros molestie. Suspendisse potenti. Fusce a libero sed augue placerat congue vel id justo.</p>
+      <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque vel velit finibus consequat.</blockquote>
+      <h3>Something to take away</h3>
+      <p>Etiam malesuada orci vel massa feugiat, non pretium erat gravida. Vivamus tincidunt lacus sit amet neque vestibulum, quis facilisis sem efficitur. Aenean at libero vitae nunc consequat tincidunt.</p>
+    </div>
+    <div class="paper-reader__end mono">DOUBLECLICC <span>END OF NOTE / 01</span></div>
+  </article>
+</dialog>
+
+<dialog class="modal paper-modal" id="paper-02" aria-labelledby="paper-title-02">
+  <article class="modal__panel paper-reader">
+    <button type="button" class="modal__close mono" data-close-paper autofocus aria-label="Close gray paper">ESC / CLOSE ✕</button>
+    <p class="paper-reader__tag mono">GRAY PAPERS / 02 — SYSTEMS &amp; HANDOFFS</p>
+    <h2 class="modal__title" id="paper-title-02">Your tools work. Do they work together?</h2>
+    <p class="paper-reader__intro">Follow the information that falls between your CRM, inbox, and calendar.</p>
+    <div class="paper-reader__body">
+      <p class="paper-reader__draft mono">Sample paper / placeholder copy</p>
+      <h3>The observation</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat, risus sit amet facilisis interdum, justo ligula sollicitudin neque, vitae elementum sapien velit a nulla. Sed euismod mi at arcu interdum, ac pellentesque ipsum consequat.</p>
+      <p>Praesent vitae metus eu nisl tincidunt tincidunt. Aliquam erat volutpat. Donec quis magna at nulla posuere dignissim. Curabitur malesuada, est non fermentum volutpat, augue nibh tincidunt lectus, in viverra velit erat id sapien.</p>
+      <h3>A closer look</h3>
+      <p>Nullam commodo lorem sed mi faucibus, vitae suscipit sapien feugiat. Mauris porttitor sem vel sapien ultrices, eu tincidunt eros molestie. Suspendisse potenti. Fusce a libero sed augue placerat congue vel id justo.</p>
+      <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque vel velit finibus consequat.</blockquote>
+      <h3>Something to take away</h3>
+      <p>Etiam malesuada orci vel massa feugiat, non pretium erat gravida. Vivamus tincidunt lacus sit amet neque vestibulum, quis facilisis sem efficitur. Aenean at libero vitae nunc consequat tincidunt.</p>
+    </div>
+    <div class="paper-reader__end mono">DOUBLECLICC <span>END OF NOTE / 02</span></div>
+  </article>
+</dialog>
+
+<dialog class="modal paper-modal" id="paper-03" aria-labelledby="paper-title-03">
+  <article class="modal__panel paper-reader">
+    <button type="button" class="modal__close mono" data-close-paper autofocus aria-label="Close gray paper">ESC / CLOSE ✕</button>
+    <p class="paper-reader__tag mono">GRAY PAPERS / 03 — PRACTICAL AUTOMATION</p>
+    <h2 class="modal__title" id="paper-title-03">Before you automate, find the friction.</h2>
+    <p class="paper-reader__intro">A field note on choosing the small fix that makes the biggest difference.</p>
+    <div class="paper-reader__body">
+      <p class="paper-reader__draft mono">Sample paper / placeholder copy</p>
+      <h3>The observation</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat, risus sit amet facilisis interdum, justo ligula sollicitudin neque, vitae elementum sapien velit a nulla. Sed euismod mi at arcu interdum, ac pellentesque ipsum consequat.</p>
+      <p>Praesent vitae metus eu nisl tincidunt tincidunt. Aliquam erat volutpat. Donec quis magna at nulla posuere dignissim. Curabitur malesuada, est non fermentum volutpat, augue nibh tincidunt lectus, in viverra velit erat id sapien.</p>
+      <h3>A closer look</h3>
+      <p>Nullam commodo lorem sed mi faucibus, vitae suscipit sapien feugiat. Mauris porttitor sem vel sapien ultrices, eu tincidunt eros molestie. Suspendisse potenti. Fusce a libero sed augue placerat congue vel id justo.</p>
+      <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque vel velit finibus consequat.</blockquote>
+      <h3>Something to take away</h3>
+      <p>Etiam malesuada orci vel massa feugiat, non pretium erat gravida. Vivamus tincidunt lacus sit amet neque vestibulum, quis facilisis sem efficitur. Aenean at libero vitae nunc consequat tincidunt.</p>
+    </div>
+    <div class="paper-reader__end mono">DOUBLECLICC <span>END OF NOTE / 03</span></div>
+  </article>
+</dialog>
 
 <dialog class="modal" id="diagnosticModal" aria-labelledby="diagTitle">
     <div class="modal__panel">

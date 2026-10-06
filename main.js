@@ -30,7 +30,7 @@
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
   var sectionIndex = {
     hero: '01', leaks: '02', systems: '03',
-    work: '04', clients: '05', about: '06', method: '07', diagnose: '08'
+    work: '04', clients: '05', 'gray-papers': '06', method: '07', diagnose: '08'
   };
   var ticking = false;
 
@@ -129,8 +129,28 @@
     });
   }
 
+  document.querySelectorAll('[data-open-paper]').forEach(function (button) {
+    var paper = document.getElementById(button.dataset.openPaper);
+    if (!paper) return;
+    button.addEventListener('click', function () {
+      paper.showModal();
+      paper.querySelector('.modal__panel').scrollTop = 0;
+      document.body.classList.add('paper-is-open');
+    });
+    paper.querySelector('[data-close-paper]').addEventListener('click', function () {
+      paper.close();
+    });
+    paper.addEventListener('click', function (event) {
+      if (event.target === paper) paper.close();
+    });
+    paper.addEventListener('close', function () {
+      document.body.classList.remove('paper-is-open');
+      button.focus({ preventScroll: true });
+    });
+  });
+
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  document.querySelectorAll('.pipeline, .patch__col, .client-card, .protocol__step, .operator-mark').forEach(function (surface) {
+  document.querySelectorAll('.pipeline, .patch__col, .client-card, .protocol__step, .operator-mark, .paper-card').forEach(function (surface) {
     surface.classList.add('pointer-surface');
     surface.addEventListener('pointermove', function (event) {
       if (reduceMotion || !finePointer.matches) return;
