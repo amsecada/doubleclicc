@@ -149,6 +149,33 @@
     });
   });
 
+  // Repeat the client strip once for a seamless loop; keep one accessible list.
+  var clientCarousel = document.getElementById('clientCarousel');
+  if (clientCarousel) {
+    var clientTrack = clientCarousel.querySelector('.client-carousel__track');
+    var clientCopy = clientTrack.querySelector('.client-grid').cloneNode(true);
+    clientCopy.setAttribute('aria-hidden', 'true');
+    clientCopy.removeAttribute('aria-label');
+    clientCopy.inert = true;
+    clientTrack.appendChild(clientCopy);
+    clientCarousel.classList.add('is-ready');
+    var clientMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateClientMotion() {
+      // Make the static, scrollable strip reachable with the keyboard.
+      if (clientMotion.matches) {
+        clientCarousel.tabIndex = 0;
+        clientCarousel.setAttribute('role', 'region');
+        clientCarousel.setAttribute('aria-label', 'Client organizations; scroll to see more');
+      } else {
+        clientCarousel.removeAttribute('tabindex');
+        clientCarousel.removeAttribute('role');
+        clientCarousel.removeAttribute('aria-label');
+      }
+    }
+    clientMotion.addEventListener('change', updateClientMotion);
+    updateClientMotion();
+  }
+
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
   document.querySelectorAll('.pipeline, .patch__col, .client-card, .protocol__step, .operator-mark, .paper-card').forEach(function (surface) {
     surface.classList.add('pointer-surface');
