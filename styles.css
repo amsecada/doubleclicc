@@ -776,6 +776,8 @@ body {
 .client-card--oshkosh > span:last-child { letter-spacing: .045em; font-size: 19px; }
 .client-card--kelloggs > span { color: #fa796d; font-family: Georgia, serif; font-weight: 700; font-style: italic; font-size: 32px; }
 .client-card--butler .client-symbol { color: #99b1df; font-family: Georgia, serif; }
+.client-card--salesforce > span { color: #94c9ec; font-weight: 700; letter-spacing: -.045em; }
+.client-card--openlane > span { color: #cbe5ac; font-size: 21px; font-weight: 700; letter-spacing: .035em; }
 .operator--editorial { grid-template-columns: .7fr 1.3fr; gap: 70px; align-items: center; }
 .operator-mark { aspect-ratio: 1.15; background: #cbe5ac; color: #19352a; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 4px; }
 .operator-mark > span { font-size: clamp(90px, 14vw, 190px); letter-spacing: -.15em; line-height: 1.1; margin-left: -.15em; }

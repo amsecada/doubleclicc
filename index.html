@@ -210,6 +210,8 @@
         <li class="client-card client-card--gd"><span class="client-symbol" aria-hidden="true">GD</span><span>GENERAL DYNAMICS</span></li>
         <li class="client-card client-card--oshkosh"><span class="client-symbol" aria-hidden="true">O</span><span>OSHKOSH<small>DEFENSE</small></span></li>
         <li class="client-card client-card--kelloggs"><span>Kellogg’s</span></li>
+        <li class="client-card client-card--salesforce"><span>salesforce</span></li>
+        <li class="client-card client-card--openlane"><span>OPENLANE</span></li>
       </ul>
       </div>
       </div>
@@ -236,8 +238,8 @@
         <button class="paper-card" type="button" data-open-paper="paper-03" aria-haspopup="dialog">
           <span class="paper-card__meta mono"><span>GP / 03</span><span>FIELD NOTE</span></span>
           <span class="paper-card__category mono">PRACTICAL AUTOMATION</span>
-          <span class="paper-card__title">Before you automate, find the friction.</span>
-          <span class="paper-card__summary">A field note on choosing the small fix that makes the biggest difference.</span>
+          <span class="paper-card__title">AI Agents, Same Old Bureaucracy</span>
+          <span class="paper-card__summary">Faster agents. More tokens. The same bottlenecks. A DevOps perspective on the difference between activity and value.</span>
           <span class="paper-card__footer mono">Read paper <span aria-hidden="true">↗</span></span>
         </button>
       </div>
@@ -357,18 +359,223 @@
   <article class="modal__panel paper-reader">
     <button type="button" class="modal__close mono" data-close-paper autofocus aria-label="Close gray paper">ESC / CLOSE ✕</button>
     <p class="paper-reader__tag mono">GRAY PAPERS / 03 — PRACTICAL AUTOMATION</p>
-    <h2 class="modal__title" id="paper-title-03">Before you automate, find the friction.</h2>
-    <p class="paper-reader__intro">A field note on choosing the small fix that makes the biggest difference.</p>
+    <h2 class="modal__title" id="paper-title-03">AI Agents, Same Old Bureaucracy</h2>
+    <p class="paper-reader__intro">AI agents can make individual tasks dramatically faster while making the overall system more expensive. DevOps learned this lesson decades ago: optimize the constraint, not the activity.</p>
     <div class="paper-reader__body">
-      <p class="paper-reader__draft mono">Sample paper / placeholder copy</p>
-      <h3>The observation</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consequat, risus sit amet facilisis interdum, justo ligula sollicitudin neque, vitae elementum sapien velit a nulla. Sed euismod mi at arcu interdum, ac pellentesque ipsum consequat.</p>
-      <p>Praesent vitae metus eu nisl tincidunt tincidunt. Aliquam erat volutpat. Donec quis magna at nulla posuere dignissim. Curabitur malesuada, est non fermentum volutpat, augue nibh tincidunt lectus, in viverra velit erat id sapien.</p>
-      <h3>A closer look</h3>
-      <p>Nullam commodo lorem sed mi faucibus, vitae suscipit sapien feugiat. Mauris porttitor sem vel sapien ultrices, eu tincidunt eros molestie. Suspendisse potenti. Fusce a libero sed augue placerat congue vel id justo.</p>
-      <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae neque vel velit finibus consequat.</blockquote>
-      <h3>Something to take away</h3>
-      <p>Etiam malesuada orci vel massa feugiat, non pretium erat gravida. Vivamus tincidunt lacus sit amet neque vestibulum, quis facilisis sem efficitur. Aenean at libero vitae nunc consequat tincidunt.</p>
+      <p>Somehow, in our rush to replace corporate bureaucracy with AI, we have begun rebuilding corporate bureaucracy—with AI.</p>
+      <p>I spent a large part of my career working in DevOps. Across hundreds of pipeline implementations and enterprise transformations, I kept encountering the same problem wearing different clothes.</p>
+      <p>A system wasn’t slow because every component of the system was slow.</p>
+      <p>It was slow because something was constraining the flow of work through the system.</p>
+      <p>Find it.</p>
+      <p>Fix it.</p>
+      <p>Then look again, because the bottleneck probably moved.</p>
+      <p>Repeat.</p>
+      <p>That’s an oversimplification of DevOps, obviously. But at the systems-thinking level, it gets surprisingly close to the heart of the job.</p>
+      <p>It also gives us a useful framework for thinking about the explosion of AI agents happening right now.</p>
+      <p>Because I think we’re in danger of confusing three very different things:</p>
+      <p>Agent productivity.</p>
+      <p>System throughput.</p>
+      <p>Business value.</p>
+      <p>They are not interchangeable.</p>
+      <p>And optimizing one can actually make the others worse.</p>
+      <h3>We’ve Seen This Movie Before</h3>
+      <p>DevOps owes a substantial intellectual debt to Lean manufacturing and Eliyahu Goldratt’s Theory of Constraints.</p>
+      <p>The fundamental insight is almost painfully obvious once you see it: the output of a system is determined by its constraints.</p>
+      <p>If one machine in a factory can process ten widgets per hour, making the machine immediately before it capable of producing one thousand widgets per hour does not give you a factory that produces one thousand finished widgets.</p>
+      <p>It gives you a factory that produces ten finished widgets and an increasingly enormous pile of unfinished inventory.</p>
+      <p>DevOps brought that same thinking to software.</p>
+      <p>Gene Kim’s The Phoenix Project describes improvements made away from a bottleneck as largely illusory: improving upstream capacity simply causes additional inventory to accumulate at the constraint.</p>
+      <p>Software inventory is just harder to see.</p>
+      <p>It looks like tickets.</p>
+      <p>Branches.</p>
+      <p>Pull requests.</p>
+      <p>Work waiting for QA.</p>
+      <p>Security reviews.</p>
+      <p>Architecture reviews.</p>
+      <p>Unfinished projects.</p>
+      <p>Deployment queues.</p>
+      <p>The objective was never to make developers type faster.</p>
+      <p>The objective was to improve the flow of value from an idea to a customer.</p>
+      <p>That distinction matters enormously now.</p>
+      <p>Because we just gave developers machines capable of typing very, very fast.</p>
+      <h3>The $5,000 Meeting About a Blue Button</h3>
+      <p>One reason people enjoyed bringing me into large technical transformations was that I had very little sentimental attachment to existing process.</p>
+      <p>Enterprise processes accumulate.</p>
+      <p>A production incident creates an approval.</p>
+      <p>An audit creates a control.</p>
+      <p>A VP creates a committee.</p>
+      <p>Another department wants representation on that committee.</p>
+      <p>Someone creates a spreadsheet to prepare for the committee.</p>
+      <p>Eventually there is a meeting before the meeting.</p>
+      <p>Every individual addition can have a perfectly reasonable explanation.</p>
+      <p>The resulting system can still be completely insane.</p>
+      <p>I have watched rooms full of extremely expensive people spend time adjudicating decisions wildly beneath the level at which their judgment actually created value.</p>
+      <p>Do we really need a steering committee of senior IT leadership involved in deciding whether a button complies with the corporate color palette?</p>
+      <p>Apparently, sometimes we do.</p>
+      <p>I’ve seen it.</p>
+      <p>This is not an argument against governance.</p>
+      <p>Security matters.</p>
+      <p>Architecture matters.</p>
+      <p>Product management matters.</p>
+      <p>Compliance matters.</p>
+      <p>Controls exist because organizations have real risks.</p>
+      <p>But every control also has a cost.</p>
+      <p>The question mature organizations eventually learn to ask is:</p>
+      <p>Does the marginal value of this control exceed the friction it adds to the system?</p>
+      <p>For human organizations, that friction was usually expressed in salaries, meetings, queues and lead time.</p>
+      <p>For agentic organizations, we’re about to express a lot of it in tokens.</p>
+      <h3>We Rebuilt the Org Chart Out of Tokens</h3>
+      <p>Look at some of the increasingly elaborate agent architectures being proposed today.</p>
+      <p>There is a developer agent.</p>
+      <p>A reviewer agent.</p>
+      <p>A product-management agent.</p>
+      <p>A security agent.</p>
+      <p>An architecture agent.</p>
+      <p>A governance agent.</p>
+      <p>Perhaps a manager agent coordinating them.</p>
+      <p>Perhaps another agent evaluating whether the manager agent appropriately coordinated the other agents.</p>
+      <p>The diagram looks wonderfully sophisticated.</p>
+      <p>Then you inspect the actual execution trace.</p>
+      <p>The developer agent builds something.</p>
+      <p>The product agent rejects it.</p>
+      <p>The developer rewrites it.</p>
+      <p>The architecture agent objects.</p>
+      <p>The developer rewrites it again.</p>
+      <p>The security agent discovers something everyone could have known before implementation began.</p>
+      <p>Another cycle starts.</p>
+      <p>We’ve automated the org chart.</p>
+      <p>Worse, we’ve automated some of its worst behaviors.</p>
+      <p>And unlike the corporate meeting where everyone is salaried whether the meeting happens or not, the meter is running during every one of these conversations.</p>
+      <p>Anthropic has published unusually candid data about this problem.</p>
+      <p>In its engineering write-up on its multi-agent Research system, Anthropic reported that ordinary agents used roughly four times as many tokens as normal chat interactions, while its multi-agent systems used roughly 15 times as many tokens. Anthropic’s conclusion wasn’t that multi-agent systems are bad. In fact, they performed extremely well on the right problems.</p>
+      <p>The conclusion was economic: the task needs to be valuable enough to justify the additional consumption. Anthropic also noted that tightly coupled work such as many coding tasks may be less suitable for multi-agent approaches than highly parallelizable research.</p>
+      <p>That distinction is enormously important.</p>
+      <p>The question isn’t:</p>
+      <p>Did all of the agents successfully perform their jobs?</p>
+      <p>The question is:</p>
+      <p>Did the system create enough additional value to justify those jobs existing?</p>
+      <p>Those are very different measurements.</p>
+      <h3>Productivity Is Not Throughput</h3>
+      <p>Imagine an ordinary software delivery process:</p>
+      <p>Idea → Development → Review → Security → Product → Deployment → Customer</p>
+      <p>Suppose development requires five days.</p>
+      <p>Review takes one day.</p>
+      <p>Now introduce an extraordinary coding agent and reduce development from five days to twenty minutes.</p>
+      <p>That’s incredible.</p>
+      <p>But review still takes a day.</p>
+      <p>You haven’t made the entire system hundreds of times faster.</p>
+      <p>You’ve moved the constraint.</p>
+      <p>If you continue optimizing development anyway, you simply create work faster than the rest of the organization can absorb it.</p>
+      <p>DORA’s current research is finding exactly this kind of effect.</p>
+      <p>Its 2025 research describes AI as an amplifier of the underlying organizational system: strong organizations can turn AI into greater performance, while dysfunctional systems can have their weaknesses amplified instead.</p>
+      <p>A subsequent qualitative analysis involving 1,110 Google software engineers found that AI frequently accelerates initial code generation while shifting some of the saved effort into auditing and verification. Faster creation can therefore increase the cognitive burden placed on downstream reviewers.</p>
+      <p>That is textbook constraint movement.</p>
+      <p>Generation ↓</p>
+      <p>while</p>
+      <p>Verification ↑ Review ↑ Integration ↑ Rework ↑</p>
+      <p>This doesn’t mean AI failed.</p>
+      <p>It means the bottleneck moved.</p>
+      <p>That’s what successful optimization does.</p>
+      <p>The mistake is continuing to spend money optimizing the place where the bottleneck used to be.</p>
+      <h3>Cheap Work Is Not Necessarily Valuable Work</h3>
+      <p>There is another problem.</p>
+      <p>When something becomes dramatically cheaper to produce, we start producing things we previously would not have bothered producing.</p>
+      <p>Researchers at METR have been exploring exactly this distinction.</p>
+      <p>They separate AI productivity into multiple concepts, including improvement on existing tasks, improvement on the new set of tasks people choose after adopting AI, and actual improvement in the value of the work produced. Those measurements can diverge substantially.</p>
+      <p>METR uses a fantastic term for one consequence:</p>
+      <p>Cadillac Tasks.</p>
+      <p>These are activities that become attractive largely because AI has made them extremely cheap.</p>
+      <p>Suddenly we can generate another architectural analysis.</p>
+      <p>Another prototype.</p>
+      <p>Another implementation.</p>
+      <p>Another 40-page specification.</p>
+      <p>Another dashboard.</p>
+      <p>Another 700 tests.</p>
+      <p>Another PR.</p>
+      <p>Another five alternate versions of the same feature.</p>
+      <p>Technically, productivity is exploding.</p>
+      <p>But there is a question hiding underneath all of that activity:</p>
+      <p>Did any of this need to exist?</p>
+      <p>METR’s analysis of thousands of coding-agent transcripts found very large estimated time savings on the tasks where agents were used, while also warning that this can overstate overall productivity because people select tasks where AI is especially useful—and undertake lower-value work they might never have done before.</p>
+      <p>The ability to cheaply produce an artifact does not establish that the artifact creates value.</p>
+      <p>That’s going to be one of the defining management problems of the agentic era.</p>
+      <h3>Governance Isn’t the Problem. Late Governance Is.</h3>
+      <p>None of this means we should unleash autonomous agents into production environments and hope for the best.</p>
+      <p>The opposite.</p>
+      <p>Governance becomes more important as the cost of action approaches zero.</p>
+      <p>But governance should increasingly operate as a constraint available at the point of execution, rather than a bureaucracy waiting downstream.</p>
+      <p>If the security agent already knows that a particular authentication pattern is prohibited, why should the development agent discover that after writing the application?</p>
+      <p>If architectural rules are deterministic, why should we wait for an architecture-review agent to reject the implementation?</p>
+      <p>If product acceptance criteria exist, why aren’t they available before execution begins?</p>
+      <p>The goal should increasingly be:</p>
+      <p>policy before execution, automated validation during execution, judgment by exception.</p>
+      <p>Security rules belong in context.</p>
+      <p>Architecture standards belong in context.</p>
+      <p>Acceptance criteria belong in context.</p>
+      <p>Deterministic checks should be deterministic.</p>
+      <p>Permissions should be enforced by the platform.</p>
+      <p>Expensive reasoning—and expensive humans—should be reserved for situations where judgment actually adds value.</p>
+      <p>DORA is already recommending a similar shift in AI-assisted software delivery: move automated feedback toward the author, work in smaller batches and reconsider downstream quality gates when faster feedback can prevent rework earlier.</p>
+      <p>That’s not less governance.</p>
+      <p>It’s better governance.</p>
+      <p>DevOps people have a name for much of this philosophy already:</p>
+      <p>shift left.</p>
+      <h3>Start Measuring Cost Per Accepted Outcome</h3>
+      <p>We’re going to need better economics around agents.</p>
+      <p>Because tokens alone aren’t enough.</p>
+      <p>A recent McKinsey analysis of agentic workflow economics argues that token costs can be a minority of the actual variable expense of running some enterprise agents. In the workflows it modeled, human oversight could represent roughly 70–75% of variable costs.</p>
+      <p>So the useful unit of measurement isn’t:</p>
+      <p>cost per token.</p>
+      <p>Or:</p>
+      <p>tokens per developer.</p>
+      <p>Or:</p>
+      <p>tasks completed per agent.</p>
+      <p>It’s something closer to:</p>
+      <p>Cost Per Accepted Outcome</p>
+      <p>Cost per Accepted Outcome =</p>
+      <p>(Model Cost + Tool Cost + Human Review + Agent Review + Rework + Infrastructure)</p>
+      <p>divided by</p>
+      <p>Accepted Business Outcomes</p>
+      <p>I’d want to know:</p>
+      <p>How long did intent-to-production actually take?</p>
+      <p>What percentage of generated work survived first review?</p>
+      <p>How many agent cycles were required?</p>
+      <p>How much human review was necessary?</p>
+      <p>How much rework occurred?</p>
+      <p>What was the fully loaded cost of the accepted result?</p>
+      <p>And, most importantly, did the result create anything the business actually cares about?</p>
+      <p>DORA has started pushing organizations in exactly this direction. In response to the emerging practice of “tokenmaxxing”—treating AI consumption itself as evidence of productivity—it recommends sticking with outcome measurements and supplementing them with measures such as cost per accepted change and rework rate.</p>
+      <p>Because once token usage becomes the KPI, we’ll optimize token usage.</p>
+      <p>That’s what organizations do.</p>
+      <p>And we’ll have invented the AI equivalent of measuring programmer productivity by lines of code.</p>
+      <h3>The Agent Productivity Trap</h3>
+      <p>There is an extraordinary amount of real productivity being created by AI agents.</p>
+      <p>I’m not skeptical about that.</p>
+      <p>I’m wildly optimistic about it.</p>
+      <p>But that makes disciplined systems thinking more important, not less.</p>
+      <p>When producing work was expensive, organizations were forced to ration production.</p>
+      <p>When producing work becomes cheap, the constraint moves somewhere else.</p>
+      <p>Review.</p>
+      <p>Judgment.</p>
+      <p>Integration.</p>
+      <p>Trust.</p>
+      <p>Distribution.</p>
+      <p>Customer attention.</p>
+      <p>Capital.</p>
+      <p>Decision-making.</p>
+      <p>Something will remain scarce.</p>
+      <p>Our job is to find it.</p>
+      <p>The great mistake of the agentic era will be confusing the increasing productivity of an individual agent with increasing throughput of the system—and confusing both with value to the business.</p>
+      <p>Faster agents aren’t the objective.</p>
+      <p>More agents aren’t the objective.</p>
+      <p>More tokens aren’t the objective.</p>
+      <p>More artifacts aren’t the objective.</p>
+      <p>Value reaching the customer is the objective.</p>
+      <p>Find whatever prevents that value from moving faster, cheaper and more reliably.</p>
+      <p>Fix it.</p>
+      <p>Then look again.</p>
+      <p>The constraint will have moved.</p>
+      <p>We’ve done this before.</p>
     </div>
     <div class="paper-reader__end mono">DOUBLECLICC <span>END OF NOTE / 03</span></div>
   </article>
