@@ -17,21 +17,41 @@ jobs:
     name: Validate release
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: read
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Test the exact release commit
+      - uses: actions/configure-pages@v5
+        id: pages
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run typecheck
+      - name: Test navigation on the exact release commit
         run: python3 -m unittest discover -s tests -v
-      - name: Stage public site files
+      - name: Build and test the Pages output
+        env:
+          SITE_BASE: ${{ steps.pages.outputs.base_path }}/
         run: |
-          mkdir _site
-          cp index.html styles.css main.js .nojekyll _site/
+          npm run build
+          npm run test:e2e
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: dist
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: release-browser-failures
+          path: test-results/
+          retention-days: 7
 
   deploy:
     name: Publish site
@@ -45,7 +65,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/configure-pages@v5
       - name: Deploy tested site
         id: deployment
         uses: actions/deploy-pages@v4

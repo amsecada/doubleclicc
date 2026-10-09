@@ -61,6 +61,12 @@ class NavigationTests(unittest.TestCase):
                 self.assertEqual(targets[unquote(href[1:])], 1,
                                  f'{href} must resolve to exactly one target in main')
 
+    def test_remaining_sections_follow_hero_without_redundant_sections(self):
+        sections = [attrs['id'] for (tag, attrs), parents in self.page.elements
+                    if tag == 'section' and 'id' in attrs
+                    and any(t == 'main' for t, _ in parents)]
+        self.assertEqual(sections, ['hero', 'work', 'clients', 'gray-papers', 'method', 'diagnose'])
+
     def test_ids_are_unique(self):
         ids = Counter(e[1]['id'] for e, _ in self.page.elements if 'id' in e[1])
         self.assertEqual([key for key, count in ids.items() if count > 1], [])
