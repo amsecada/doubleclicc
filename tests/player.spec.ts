@@ -24,14 +24,21 @@ test('built page loads player and local fonts', async ({ page, request }) => {
 
 for (const name of ['Run Revenue Diagnostic — animated banner', 'Run Revenue Diagnostic']) {
   for (const action of ['click', 'keyboard']) {
-    test(`${name} navigates to Google by ${action}`, async ({ page }) => {
-      await page.route('https://google.com/**', route => route.fulfill({ body: 'Navigation reached Google' }));
+    test(`${name} opens Google in a new tab by ${action}`, async ({ page, context }) => {
+      await context.route('https://google.com/**', route => route.fulfill({ body: 'Navigation reached Google' }));
       await page.goto('./');
       const link = page.locator('#doubleclicc-player').getByRole('link', { name, exact: true });
       await expect(link).toHaveAttribute('href', 'https://google.com/');
+      await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      const originalURL = page.url();
+      const popupPromise = page.waitForEvent('popup');
       if (action === 'click') await link.click();
       else { await link.focus(); await page.keyboard.press('Enter'); }
-      await expect(page).toHaveURL('https://google.com/');
+      const popup = await popupPromise;
+      await expect(popup).toHaveURL('https://google.com/');
+      expect(await popup.evaluate(() => window.opener)).toBeNull();
+      await expect(page).toHaveURL(originalURL);
+      await popup.close();
     });
   }
 }
@@ -78,6 +85,8 @@ test('without JavaScript the static banner link is usable', async ({ browser, ba
   await page.goto(baseURL!);
   await expect(page.locator('#player-fallback a')).toBeVisible();
   await expect(page.locator('#player-fallback a')).toHaveAttribute('href', 'https://google.com/');
+  await expect(page.locator('#player-fallback a')).toHaveAttribute('target', '_blank');
+  await expect(page.locator('#player-fallback a')).toHaveAttribute('rel', 'noopener noreferrer');
   await context.close();
 });
 

@@ -56,7 +56,8 @@ browser review separately verifies Google's actual page opens.
 The banner and its persistent button use `DIAGNOSTIC_HREF` in `src/config.ts`,
 currently `https://google.com/` for the proof. Vite also inserts this destination
 into the static fallback link, so visitors without JavaScript reach the same
-place. Change the configuration value and rebuild to update both.
+place. All hero links open in a new tab and preserve the current page.
+Change the configuration value and rebuild to update both.
 At viewport widths up to 960px, the menu overlays the page and temporarily
 pauses the player. Closing it preserves a manual pause. Escape, outside taps,
 navigation, and resizing to desktop dismiss the menu; without JavaScript the

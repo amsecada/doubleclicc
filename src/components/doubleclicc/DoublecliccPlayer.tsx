@@ -187,6 +187,8 @@ export const DoublecliccPlayer = ({
             className="doubleclicc-player__banner-link"
             aria-label={`${ctaLabel} — animated banner`}
             href={diagnosticHref}
+            target="_blank"
+            rel="noopener noreferrer"
           />
         ) : null}
       </div>
@@ -205,7 +207,7 @@ export const DoublecliccPlayer = ({
             {ctaLabel} <span aria-hidden="true">↗</span>
           </button>
         ) : diagnosticHref ? (
-          <a href={diagnosticHref} style={controlStyle}>
+          <a href={diagnosticHref} target="_blank" rel="noopener noreferrer" style={controlStyle}>
             {ctaLabel} <span aria-hidden="true">↗</span>
           </a>
         ) : null}
