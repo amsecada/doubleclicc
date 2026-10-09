@@ -10,7 +10,7 @@ test('built page loads player and local fonts', async ({ page, request }) => {
   await page.goto('./');
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('#doubleclicc-player')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Pause animation' })).toBeVisible();
+  await expect(page.locator('.doubleclicc-player__canvas').getByText('01 / FIND THE GAPS', { exact: true })).toBeVisible();
   for (const font of ['Inter-400.ttf', 'Inter-600.ttf', 'IBM-Plex-Mono-400.ttf']) {
     const response = await request.get(`fonts/${font}`);
     expect(response.status()).toBe(200);
@@ -43,23 +43,15 @@ for (const name of ['Run Revenue Diagnostic — animated banner', 'Run Revenue D
   }
 }
 
-test('pause controls stop motion without navigation and survive resize', async ({ page }) => {
-  await page.goto('./');
-  await page.getByRole('button', { name: 'Pause animation' }).click();
-  const play = page.getByRole('button', { name: 'Play animation' });
-  await expect(play).toBeVisible();
-  const canvas = page.locator('.doubleclicc-player__canvas');
-  const before = await canvas.screenshot();
-  await page.waitForTimeout(250);
-  expect(await canvas.screenshot()).toEqual(before);
+test('hero keeps a centered CTA without manual playback controls', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await expect(play).toBeVisible();
-  const size = await canvas.boundingBox();
-  expect(size!.width / size!.height).toBeCloseTo(3 / 4, 2);
-  await play.focus();
-  await page.keyboard.press('Enter');
-  await expect(page.getByRole('button', { name: 'Pause animation' })).toBeVisible();
-  expect(new URL(page.url()).hostname).toBe('127.0.0.1');
+  await page.goto('./');
+  const host = page.locator('#doubleclicc-player');
+  await expect(host.getByText('01 / FIND THE GAPS', { exact: true })).toBeVisible();
+  await expect(host.getByRole('button')).toHaveCount(0);
+  const hero = await host.boundingBox();
+  const cta = await host.getByRole('link', { name: 'Run Revenue Diagnostic', exact: true }).boundingBox();
+  expect(cta!.x + cta!.width / 2).toBeCloseTo(hero!.x + hero!.width / 2, 0);
 });
 
 test('reduced motion keeps the static message and diagnostic links', async ({ page }) => {
@@ -114,7 +106,7 @@ for (const width of [360, 390, 1440]) {
   test(`page and player fit a ${width}px viewport`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('./');
-    await expect(page.getByRole('button', { name: 'Pause animation' })).toBeVisible();
+    await expect(page.locator('.doubleclicc-player__canvas').getByText('01 / FIND THE GAPS', { exact: true })).toBeVisible();
     const canvas = await page.locator('.doubleclicc-player__canvas').boundingBox();
     expect(canvas!.width / canvas!.height).toBeCloseTo(width < 768 ? 3 / 4 : 16 / 9, 2);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);

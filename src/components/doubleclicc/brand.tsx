@@ -134,9 +134,6 @@ export const Shell: React.FC<{
           background: `radial-gradient(ellipse at ${warm ? "76% 45%" : "78% 65%"}, ${warm ? "rgba(255,180,84,.075)" : "rgba(140,245,179,.065)"}, transparent 65%)`,
         }}
       />
-      <div style={{ position: "absolute", left: margin, top: 70 }}>
-        <Wordmark size={mobile ? 38 : 28} />
-      </div>
       <div
         style={{
           position: "absolute",

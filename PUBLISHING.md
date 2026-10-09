@@ -35,7 +35,7 @@ SITE_BASE=/doubleclicc/ npm run test:e2e
 ```
 
 Browser checks run against the production output on port 4173, including real
-player playback, banner/button navigation, pause/resume, reduced motion,
+player playback, banner/button navigation, menu-triggered pause/resume, reduced motion,
 failed loading, JavaScript disabled, retained dialogs, and phone widths.
 The navigation tests also check duplicate IDs, fragments, and source assets.
 Google requests in automated tests are intercepted after navigation; the local
@@ -59,7 +59,8 @@ into the static fallback link, so visitors without JavaScript reach the same
 place. All hero links open in a new tab and preserve the current page.
 Change the configuration value and rebuild to update both.
 At viewport widths up to 960px, the menu overlays the page and temporarily
-pauses the player. Closing it preserves a manual pause. Escape, outside taps,
+pauses the player. Closing it resumes playback. The hero has no manual playback
+controls; the diagnostic CTA is centered below the animation. Escape, outside taps,
 navigation, and resizing to desktop dismiss the menu; without JavaScript the
 navigation stays visible. Header clearance is measured, and scrollbar space is
 reserved so opening the menu cannot resize the animation.
