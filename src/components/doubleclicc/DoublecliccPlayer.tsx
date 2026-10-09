@@ -7,6 +7,7 @@ const loadIntro = () =>
 export type DoublecliccPlayerProps = {
   diagnosticHref?: string;
   onDiagnostic?: () => void;
+  playbackSuspended?: boolean;
   ctaLabel?: string;
   mobileBreakpoint?: number;
   className?: string;
@@ -62,6 +63,7 @@ const Fallback = () => (
 export const DoublecliccPlayer = ({
   diagnosticHref,
   onDiagnostic,
+  playbackSuspended = false,
   ctaLabel = "Run Revenue Diagnostic",
   mobileBreakpoint = 768,
   className,
@@ -72,6 +74,7 @@ export const DoublecliccPlayer = ({
   const [containerWidth, setContainerWidth] = useState<number | null>(null);
   const [reducedMotion, setReducedMotion] = useState(true);
   const [paused, setPaused] = useState(false);
+  const [userPaused, setUserPaused] = useState(false);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -114,6 +117,13 @@ export const DoublecliccPlayer = ({
     };
   }, [animate]);
 
+  useEffect(() => {
+    const player = playerRef.current;
+    if (!animate || !player) return;
+    if (playbackSuspended || userPaused) player.pause();
+    else player.play();
+  }, [animate, playbackSuspended, userPaused]);
+
   return (
     <div
       ref={containerRef}
@@ -148,7 +158,7 @@ export const DoublecliccPlayer = ({
               compositionHeight={mobile ? 1440 : 1080}
               fps={30}
               durationInFrames={750}
-              autoPlay
+              autoPlay={!playbackSuspended && !userPaused}
               loop
               initiallyMuted
               controls={false}
@@ -207,7 +217,8 @@ export const DoublecliccPlayer = ({
               borderColor: "#e9e5dd30",
               marginLeft: "auto",
             }}
-            onClickCapture={(event) => playerRef.current?.toggle(event)}
+            disabled={playbackSuspended}
+            onClick={() => setUserPaused(value => !value)}
           >
             {paused ? "Play animation" : "Pause animation"}
           </button>

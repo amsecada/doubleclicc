@@ -574,3 +574,23 @@ body.paper-is-open { overflow: hidden; }
 .player-fallback { padding: 8%; background: radial-gradient(ellipse at bottom right, #14271b, #0b0c0c 75%); }
 .player-fallback__headline { font-size: clamp(32px, 6vw, 80px); font-weight: 600; line-height: 1.08; margin: 24px 0; }
 .player-fallback__headline span { color: var(--green); }
+
+/* Mobile navigation overlays the page without resizing the player. */
+html { scroll-padding-top: calc(var(--header-height, 74px) + 16px); scrollbar-gutter: stable; }
+.site-header { padding-top: env(safe-area-inset-top, 0px); }
+.header-menu { display: contents; }
+.menu-toggle { display: none; }
+.menu-backdrop { position: fixed; inset: 0; z-index: 999; background: #0008; }
+body.mobile-menu-open { overflow: hidden; }
+@media (max-width: 960px) {
+  .has-mobile-menu .header-inner { min-height: 68px; padding-top: 12px; padding-bottom: 12px; flex-wrap: nowrap; gap: 16px; }
+  .has-mobile-menu .menu-toggle { display: inline-flex; min-height: 44px; gap: 12px; padding: 8px 14px; margin-left: auto; }
+  .has-mobile-menu .header-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 16px var(--pad) 24px; max-height: calc(100dvh - var(--header-height, 69px)); overflow-y: auto; overscroll-behavior: contain; background: var(--bg); border-bottom: 1px solid var(--line-strong); }
+  .has-mobile-menu.is-menu-open .header-menu { display: flex; flex-direction: column; gap: 20px; }
+  .has-mobile-menu .nav { order: 0; width: 100%; margin: 0; flex-direction: column; gap: 0; }
+  .has-mobile-menu .nav__link { display: flex; align-items: center; min-height: 48px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .has-mobile-menu .nav__link::after { display: none; }
+  .has-mobile-menu .header-right { margin: 0; }
+  .has-mobile-menu .status { display: none; }
+  .has-mobile-menu .nav__cta { width: 100%; min-height: 44px; justify-content: space-between; }
+}

@@ -45,6 +45,7 @@ browser review separately verifies Google's actual page opens.
 
 - `index.html`: semantic page and no-JavaScript fallback.
 - `src/main.tsx`: React mount and failure recovery; `src/site.js`: page behavior.
+- `src/mobile-menu.ts`: compact navigation, dismissal, and player suspension.
 - `src/components/doubleclicc/`: player, timeline, branding, and five scenes.
 - `src/styles.css`: page styles, fonts, and player host styling.
 - `public/fonts/`: original supplied fonts and both OFL licenses.
@@ -56,6 +57,11 @@ The banner and its persistent button use `DIAGNOSTIC_HREF` in `src/config.ts`,
 currently `https://google.com/` for the proof. Vite also inserts this destination
 into the static fallback link, so visitors without JavaScript reach the same
 place. Change the configuration value and rebuild to update both.
+At viewport widths up to 960px, the menu overlays the page and temporarily
+pauses the player. Closing it preserves a manual pause. Escape, outside taps,
+navigation, and resizing to desktop dismiss the menu; without JavaScript the
+navigation stays visible. Header clearance is measured, and scrollbar space is
+reserved so opening the menu cannot resize the animation.
 The header and final diagnostic buttons still open the existing demo form;
 it displays success without transmitting data. Connect a real submission
 service in a separately scoped change before treating it as lead capture.

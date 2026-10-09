@@ -20,6 +20,8 @@
         <span class="brand__mark mono" aria-hidden="true">//</span>
         <span class="brand__name">DOUBLECLICC</span>
       </a>
+      <button class="btn btn--ghost menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="headerMenu" aria-label="Open menu" hidden>Menu <span aria-hidden="true">☰</span></button>
+      <div class="header-menu" id="headerMenu">
       <nav class="nav" aria-label="Primary">
         <a href="#work" class="nav__link">Work</a>
         <a href="#clients" class="nav__link">Clients</a>
@@ -32,8 +34,10 @@
         </span>
         <button class="btn btn--ghost nav__cta" data-open-diagnostic>Run diagnostic <span class="btn__arrow" aria-hidden="true">→</span></button>
       </div>
+      </div>
     </div>
   </header>
+  <div class="menu-backdrop" id="menuBackdrop" aria-hidden="true" hidden></div>
 
   <main id="top">
 <!-- ============ SYS.01 — SYSTEM ONLINE / HERO ============ -->
