@@ -1,0 +1,143 @@
+DOUBLECLICC PLAYER / DEVELOPER INTEGRATION
+
+1. COPY THE SOURCE
+
+Copy component/ into the site's component directory, preserving all relative
+paths. For example:
+
+  src/components/doubleclicc/DoublecliccPlayer.tsx
+  src/components/doubleclicc/Intro.tsx
+  src/components/doubleclicc/brand.tsx
+  src/components/doubleclicc/SlashWipe.tsx
+  src/components/doubleclicc/scenes/Revenue.tsx
+  src/components/doubleclicc/scenes/Gaps.tsx
+  src/components/doubleclicc/scenes/Connected.tsx
+  src/components/doubleclicc/scenes/Method.tsx
+  src/components/doubleclicc/scenes/Outcome.tsx
+
+Merge public/fonts/ into the site's public asset directory. Preserve both OFL
+license files. Do not replace unrelated existing assets or configuration.
+
+2. ADD DEPENDENCIES
+
+Use the project's existing package manager and merge these dependencies:
+
+  npm install --save-exact remotion@4.0.534 @remotion/player@4.0.534 \
+    @remotion/transitions@4.0.534 @remotion/fonts@4.0.534
+
+Keep all Remotion packages at the same version. If the host already uses
+Remotion, reconcile versions together rather than mixing versions. Reuse the
+host's compatible React and ReactDOM installation; do not blindly replace it.
+This source was verified with React/ReactDOM 19.2.3 and TypeScript 5.9.3.
+Run the host's type checks and production build after installation.
+
+There is no need for @remotion/cli, a rendering server, Studio, registerRoot,
+Root.tsx, or an MP4 to embed this component. Do not overwrite the host's
+package.json with a different application's manifest.
+
+3. EMBED THE PLAYER
+
+Link to the site's existing diagnostic destination:
+
+  import { DoublecliccPlayer } from "./components/doubleclicc/DoublecliccPlayer";
+
+  <DoublecliccPlayer diagnosticHref={existingDiagnosticUrl} />
+
+Or open the site's existing diagnostic form:
+
+  <DoublecliccPlayer onDiagnostic={() => setDiagnosticOpen(true)} />
+
+These examples use values owned by the host application. Locate the real URL
+or form state rather than pasting undefined variables or inventing a route.
+The modal/form and its backend are outside this package. Keep focus management,
+validation, and submission behavior in the site's existing form implementation.
+Opening a form does not automatically pause the animation.
+
+The wrapper exports DoublecliccPlayerProps and accepts:
+
+  diagnosticHref    Optional link destination.
+  onDiagnostic      Optional callback; takes priority over diagnosticHref.
+  ctaLabel          Defaults to "Run Revenue Diagnostic".
+  mobileBreakpoint  Defaults to 768; measured against the container width.
+  className         Optional host styling hook.
+  style             Optional outer-container React style object.
+
+Use a normal-width container. The animation area reserves its own aspect ratio;
+the CTA/pause row adds height below it. Do not force an incompatible fixed height
+or crop the entire wrapper with overflow:hidden. Avoid overriding the internal
+canvas dimensions just to fit a narrow column: that would shrink the desktop
+layout instead of selecting the mobile composition.
+
+4. FRAMEWORK AND STATIC-HOSTING NOTES
+
+The wrapper starts with "use client", measures its container after mounting,
+and lazily imports the animation. Integrate it through the framework's client
+component/island mechanism. For a Next.js server-rendered page, place any form
+state and onDiagnostic callback in a client component; do not pass a function
+from a server component. In a plain HTML website, mount this React component
+into an element using the site's normal browser build pipeline.
+
+Build and deploy the host site's generated HTML/JS/assets as usual. Static
+hosting can serve that output; uploading these TSX source files alone will not
+produce a working page. There is no runtime video-rendering service required.
+
+brand.tsx loads fonts with staticFile("fonts/..."). Confirm the three font URLs
+work in the production deployment. For a subpath deployment, such as a GitHub
+Pages project URL, adapt these URLs to the host's public base path. If the host
+already has fonts with these names, check for collisions rather than overwriting
+them. Keep the font weights 400/600 for Inter and 400 for IBM Plex Mono.
+
+5. PLAYBACK AND ACCESSIBILITY
+
+Desktop canvas: 1920 x 1080 (16:9).
+Mobile canvas: 1080 x 1440 (3:4).
+Both: 30fps, 750 frames, 25 seconds, silent looping playback.
+
+The same Intro component selects its layout from useVideoConfig(). The wrapper
+uses ResizeObserver to choose the composition dimensions when container width
+changes. The timeline continues through a resize.
+
+Default Player controls, click-to-play, fullscreen, and spacebar interception
+are disabled. A visible, keyboard-operable pause/play button is provided outside
+the animation. Retain a way to stop automatic motion.
+
+The animation is marked decorative (aria-hidden). Keep a stable semantic H1,
+supporting copy, and the site's normal navigation in real page HTML. If this
+replaces the old hero, preserve its accessible and search-readable content.
+
+The final scene's diagnostic invitation is part of the artwork. The persistent
+CTA beneath the animation is the actual HTML link or button. It stays available
+across scene changes and in the reduced-motion fallback. Keep keyboard focus
+styles visible when applying the site's global styles.
+
+Reduced-motion users see a static branded message instead of a running Player.
+The wrapper also supplies loading/error fallbacks. Check fonts, errors, and
+layout on the deployed site; real-device performance depends on the host page.
+
+6. VERIFY THE INTEGRATION
+
+- Run the host's lint/type checks and production build.
+- Inspect all five scenes on wide desktop and narrow mobile containers.
+- Check at common phone widths, including 360px and 390px, and rotate a device.
+- Resize across the 768px container breakpoint and inspect the CTA row.
+- Verify actual font requests return successfully under the deployed base path.
+- Click the CTA and complete the site's existing diagnostic flow.
+- Tab to both controls; verify the CTA, pause, and resume work by keyboard.
+- Turn on the operating system's reduced-motion preference: the static fallback
+  should replace the animation while the CTA remains available.
+- Check for horizontal overflow and interference from global CSS resets.
+- Check a real phone for smoothness before publishing.
+
+The standalone wrapper was browser-checked for desktop/mobile switching,
+pause/resume, a diagnostic callback, and reduced-motion behavior. The receiving
+site's routes, form, framework, CSS, and deployment must still be verified there.
+
+7. SOURCE CONTROL AND LATER EDITS
+
+Commit the copied source, fonts/license notices, dependency changes, and lockfile
+in the destination project. The ZIP is a transfer snapshot; future edits in this
+source workspace will not automatically update the receiving repository.
+
+Edit brand.tsx for colors/type, scenes/ for copy and layouts, SlashWipe.tsx for
+the transition, and Intro.tsx for sequencing. If changing timeline length, update
+durationInFrames in DoublecliccPlayer.tsx to match.

@@ -1,0 +1,42 @@
+DOUBLECLICC / REMOTION PLAYER SOURCE HANDOFF
+Prepared 9 October 2026
+
+This is the current Doubleclicc animation and a React Player wrapper, including
+the alternate mobile layout. It is ready for a developer agent to integrate
+into the existing website. It is source code, not a standalone HTML page.
+
+GIVE YOUR DEVELOPER AGENT THIS REQUEST
+
+Integrate the enclosed DoublecliccPlayer into the Doubleclicc website hero.
+Read INTEGRATION.txt first. Preserve the animation's typography, colors,
+double-slash transitions, and desktop/mobile compositions. Follow this site's
+framework and component conventions. Connect the persistent diagnostic CTA to
+the site's existing diagnostic page or form; inspect the existing implementation
+to find the correct destination. Keep a semantic heading and supporting copy in
+the page. Verify desktop, mobile, keyboard operation, reduced motion, font URLs,
+and the production build. Show me the integrated page locally for review before
+publishing it. Commit the source, fonts, and dependency lockfile through the
+project's normal source-control workflow.
+
+WHAT IS INCLUDED
+
+component/DoublecliccPlayer.tsx  Website wrapper and real interactive CTA
+component/Intro.tsx            Shared 25-second animation timeline
+component/brand.tsx            Fonts, colors, logo, responsive layout helpers
+component/SlashWipe.tsx        Green double-slash transitions
+component/scenes/*.tsx         Five scenes, with desktop and mobile layouts
+public/fonts/                  Three local fonts and their license notices
+INTEGRATION.txt                Setup, examples, behavior, and validation steps
+manifest.json                  Dependency versions and composition dimensions
+
+The wrapper automatically selects a portrait composition below 768px of
+container width. It loops silently, hides the default playback controls, and
+provides its own pause/play button. Visitors who prefer reduced motion see a
+static branded fallback. The real CTA remains available throughout playback.
+
+The CTA is intentionally unconfigured: pass diagnosticHref for a link or
+onDiagnostic for a form-opening callback. A callback takes priority if both
+are provided. No CTA appears if neither is provided.
+
+This package supersedes the earlier doubleclicc-hero-source.zip snapshot.
+It contains no MP4, Gentle Breeze content, node_modules, or build output.

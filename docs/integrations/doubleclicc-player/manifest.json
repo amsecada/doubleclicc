@@ -1,0 +1,56 @@
+{
+  "name": "doubleclicc-player-source",
+  "snapshotDate": "2026-10-09",
+  "entry": "component/DoublecliccPlayer.tsx",
+  "export": "DoublecliccPlayer",
+  "dependenciesToMerge": {
+    "remotion": "4.0.534",
+    "@remotion/player": "4.0.534",
+    "@remotion/transitions": "4.0.534",
+    "@remotion/fonts": "4.0.534"
+  },
+  "verifiedWith": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "typescript": "5.9.3"
+  },
+  "playback": {
+    "fps": 30,
+    "durationInFrames": 750,
+    "durationSeconds": 25,
+    "silent": true,
+    "loop": true
+  },
+  "desktop": {
+    "width": 1920,
+    "height": 1080
+  },
+  "mobile": {
+    "width": 1080,
+    "height": 1440,
+    "containerBreakpointPx": 768
+  },
+  "ctaConfiguration": [
+    "diagnosticHref",
+    "onDiagnostic"
+  ],
+  "requiresExistingHostReactApp": true,
+  "sha256": {
+    "INTEGRATION.txt": "5eb5cafd8c63988cd4ad436edc95b1fa635aca52d7d91e1261009dd4dd7bb5cd",
+    "START-HERE.txt": "03b7187883bf5516c351aba19cc894fdaac5e4137b6c680a7835dc04d5fa2f02",
+    "component/DoublecliccPlayer.tsx": "83f7f87ee511e64aa444e4e35fe8351ad827c47d6ef424daa8e3bd00eab5a743",
+    "component/Intro.tsx": "0046afe1ac3ef0a6e0f975b4b3125453844ef32e6d0fce5ce418883fbfd99255",
+    "component/SlashWipe.tsx": "737311d806ef3f64e46af49eafe3dcda9a74dd081235b2d5929fa711d8560199",
+    "component/brand.tsx": "9049dafd704f6e654575efb7f753e1ac292b6ebeb250a9365b94ecbc96694864",
+    "component/scenes/Connected.tsx": "24a6d1a77fa6433d365a58db3456a0c80831b4ce9d44ed643cc257379f801f14",
+    "component/scenes/Gaps.tsx": "dfd5b1fc15cfc0f968b53f2c8b027754af2787b1e3423334413c895cb8c4073a",
+    "component/scenes/Method.tsx": "93c4895f4c6d3be77e0e9a8b88328920bc2558cc6c69d8e445cc56dae767248f",
+    "component/scenes/Outcome.tsx": "c3a33113959d5f6939b6103f8b733b761237d1febcc1927ed1758745bf8bf17d",
+    "component/scenes/Revenue.tsx": "1bb418fc4eeb545b8ae49cfded77eadf81786404978705ee1a6ccb6a8b6f899d",
+    "public/fonts/IBM-Plex-Mono-400.ttf": "a7fdc993f9f0387caedba4e42521136fa97e4c0837ae6239bf0413ccf8af00c2",
+    "public/fonts/IBM-Plex-Mono-OFL.txt": "7e6b2818edbd8f6a01ae80641cc8f16a51080d08fb4e532be3a0b6f74adb07da",
+    "public/fonts/Inter-400.ttf": "1b08e7fc267a5c7e1d614100f604b83e7e8a0be241f0f288faa2b3ac93a683ba",
+    "public/fonts/Inter-600.ttf": "e7a1aaf7eda9f2fad4131725fa556265ec75ca7b2d756260173a040363e8d4f7",
+    "public/fonts/Inter-OFL.txt": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57"
+  }
+}
