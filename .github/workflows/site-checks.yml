@@ -2,9 +2,9 @@ name: Site checks
 
 on:
   pull_request:
-    branches: [main, gh_pages]
+    branches: [main]
   push:
-    branches: [main, gh_pages]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -14,11 +14,34 @@ jobs:
   navigation:
     name: Navigation links
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run typecheck
       - name: Check navigation and site assets
         run: python3 -m unittest discover -s tests -v
+      - name: Build and check root deployment
+        run: |
+          npm run build
+          npm run test:e2e
+      - name: Build and check project-path deployment
+        env:
+          SITE_BASE: /doubleclicc/
+        run: |
+          npm run build
+          npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failures
+          path: test-results/
+          retention-days: 7

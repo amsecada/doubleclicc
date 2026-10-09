@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 
 test('built page loads player and local fonts', async ({ page, request }) => {
   const errors: string[] = [];
+  const fontRequests: string[] = [];
+  page.on('response', response => {
+    if (response.url().endsWith('.ttf') && response.ok()) fontRequests.push(new URL(response.url()).pathname);
+  });
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('./');
   await expect(page.locator('h1')).toHaveCount(1);
@@ -13,6 +17,8 @@ test('built page loads player and local fonts', async ({ page, request }) => {
     expect(response.headers()['content-type']).not.toContain('text/html');
   }
   await expect.poll(() => page.evaluate(() => document.fonts.check('600 16px Inter'))).toBe(true);
+  await expect.poll(() => new Set(fontRequests).size).toBe(3);
+  for (const path of fontRequests) expect(path).toMatch(new RegExp(`^${process.env.SITE_BASE || '/'}fonts/`));
   expect(errors).toEqual([]);
 });
 
@@ -58,9 +64,11 @@ test('reduced motion keeps the static message and diagnostic links', async ({ pa
 });
 
 test('failed scene load keeps a readable fallback and link', async ({ page }) => {
-  await page.route('**/assets/Intro-*.js', route => route.abort());
+  let sceneBlocked = false;
+  await page.route('**/assets/Intro-*.js', route => { sceneBlocked = true; return route.abort(); });
   await page.goto('./');
   await expect(page.locator('#doubleclicc-player').getByText('Less busywork.')).toBeVisible();
+  await expect.poll(() => sceneBlocked).toBe(true);
   await expect(page.locator('#doubleclicc-player').getByRole('link', { name: 'Run Revenue Diagnostic', exact: true })).toHaveAttribute('href', 'https://google.com/');
 });
 
@@ -101,5 +109,21 @@ for (const width of [360, 390, 1440]) {
     const canvas = await page.locator('.doubleclicc-player__canvas').boundingBox();
     expect(canvas!.width / canvas!.height).toBeCloseTo(width < 768 ? 3 / 4 : 16 / 9, 2);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+}
+
+for (const width of [390, 1440]) {
+  test(`all five scenes play at ${width}px`, async ({ page }, testInfo) => {
+    test.setTimeout(45000);
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('./');
+    const canvas = page.locator('.doubleclicc-player__canvas');
+    const chapters = ['01 / FIND THE GAPS', '02 / TRACE THE FRICTION', '03 / CONNECT THE WORK', '04 / BUILT TO MAKE A DIFFERENCE', '05 / YOUR NEXT MOVE'];
+    for (const [index, chapter] of chapters.entries()) {
+      await expect(canvas.getByText(chapter, { exact: true })).toBeVisible({ timeout: 10000 });
+      // Capture a settled point in each scene, beyond the transition/premount.
+      await page.waitForTimeout(1800);
+      await testInfo.attach(`scene-${index + 1}-${width}`, { body: await canvas.screenshot({ path: testInfo.outputPath(`scene-${index + 1}-${width}.png`) }), contentType: 'image/png' });
+    }
   });
 }

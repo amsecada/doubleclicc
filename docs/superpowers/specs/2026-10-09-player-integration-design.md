@@ -1,6 +1,6 @@
 # Doubleclicc player integration design
 
-Status: proposed for user approval; no implementation authorized yet.
+Status: approved by the user on 2026-10-09; implementation authorized.
 
 ## Intent and evidence
 

@@ -8,7 +8,7 @@ export default defineConfig({
   workers: 2,
   use: { baseURL: `http://127.0.0.1:4173${base}`, trace: 'retain-on-failure' },
   webServer: {
-    command: process.env.TEST_STATIC ? 'python3 -m http.server 4173 --bind 127.0.0.1' : `npm run preview -- --port 4173 --strictPort --base=${base}`,
+    command: `npm run preview -- --port 4173 --strictPort --base=${base}`,
     url: `http://127.0.0.1:4173${base}`,
     reuseExistingServer: false,
   },

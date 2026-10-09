@@ -128,56 +128,57 @@ export const DoublecliccPlayer = ({
       }}
     >
       {/* Keep the site's semantic heading outside this decorative animation. */}
-      <div className="doubleclicc-player__canvas"
+      <div
+        className="doubleclicc-player__canvas"
         style={{ aspectRatio: mobile ? "3 / 4" : "16 / 9" }}
       >
-      <div
-        aria-hidden="true"
-        style={{
-          position: "relative",
-          aspectRatio: mobile ? "3 / 4" : "16 / 9",
-          overflow: "hidden",
-        }}
-      >
-        {animate ? (
-          <Player
-            ref={playerRef}
-            lazyComponent={loadIntro}
-            compositionWidth={mobile ? 1080 : 1920}
-            compositionHeight={mobile ? 1440 : 1080}
-            fps={30}
-            durationInFrames={750}
-            autoPlay
-            loop
-            initiallyMuted
-            controls={false}
-            clickToPlay={false}
-            doubleClickToFullscreen={false}
-            spaceKeyToPlayOrPause={false}
-            allowFullscreen={false}
-            numberOfSharedAudioTags={0}
-            renderLoading={() => <Fallback />}
-            errorFallback={() => <Fallback />}
-            style={{ width: "100%" }}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "relative",
+            aspectRatio: mobile ? "3 / 4" : "16 / 9",
+            overflow: "hidden",
+          }}
+        >
+          {animate ? (
+            <Player
+              ref={playerRef}
+              lazyComponent={loadIntro}
+              compositionWidth={mobile ? 1080 : 1920}
+              compositionHeight={mobile ? 1440 : 1080}
+              fps={30}
+              durationInFrames={750}
+              autoPlay
+              loop
+              initiallyMuted
+              controls={false}
+              clickToPlay={false}
+              doubleClickToFullscreen={false}
+              spaceKeyToPlayOrPause={false}
+              allowFullscreen={false}
+              numberOfSharedAudioTags={0}
+              renderLoading={() => <Fallback />}
+              errorFallback={() => <Fallback />}
+              style={{ width: "100%" }}
+            />
+          ) : (
+            <Fallback />
+          )}
+        </div>
+        {onDiagnostic ? (
+          <button
+            type="button"
+            className="doubleclicc-player__banner-link"
+            aria-label={`${ctaLabel} — animated banner`}
+            onClick={onDiagnostic}
           />
-        ) : (
-          <Fallback />
-        )}
-      </div>
-      {onDiagnostic ? (
-        <button
-          type="button"
-          className="doubleclicc-player__banner-link"
-          aria-label={`${ctaLabel} — animated banner`}
-          onClick={onDiagnostic}
-        />
-      ) : diagnosticHref ? (
-        <a
-          className="doubleclicc-player__banner-link"
-          aria-label={`${ctaLabel} — animated banner`}
-          href={diagnosticHref}
-        />
-      ) : null}
+        ) : diagnosticHref ? (
+          <a
+            className="doubleclicc-player__banner-link"
+            aria-label={`${ctaLabel} — animated banner`}
+            href={diagnosticHref}
+          />
+        ) : null}
       </div>
       <div
         style={{

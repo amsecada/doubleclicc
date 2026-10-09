@@ -5,8 +5,6 @@ import './site.js';
 
 const mount = document.getElementById('doubleclicc-player');
 const fallback = document.getElementById('player-fallback');
-const fallbackLink = fallback?.querySelector('a');
-if (fallbackLink) fallbackLink.href = DIAGNOSTIC_HREF;
 
 if (mount) {
   import('./components/doubleclicc/DoublecliccPlayer').then(({ DoublecliccPlayer }) => {
