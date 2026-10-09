@@ -1,16 +1,21 @@
 import { test, expect, type Page } from '@playwright/test';
 
+// Inspect the rendered composition, excluding the menu layered over the canvas.
+// Its frame-driven styles/SVG attributes change during playback and stay fixed
+// while suspended, regardless of browser screenshot compositing transitions.
 async function expectFrozen(page: Page) {
-  const canvas = page.locator('.doubleclicc-player__canvas');
-  const frame = await canvas.screenshot();
+  const composition = page.locator('.__remotion-player');
+  await expect(composition).toBeVisible();
+  const frame = await composition.innerHTML();
   await page.waitForTimeout(300);
-  expect(await canvas.screenshot()).toEqual(frame);
+  expect(await composition.innerHTML()).toBe(frame);
 }
 
 async function expectPlaying(page: Page) {
-  const canvas = page.locator('.doubleclicc-player__canvas');
-  const frame = await canvas.screenshot();
-  await expect.poll(async () => !(await canvas.screenshot()).equals(frame)).toBe(true);
+  const composition = page.locator('.__remotion-player');
+  await expect(composition).toBeVisible();
+  const frame = await composition.innerHTML();
+  await expect.poll(() => composition.innerHTML()).not.toBe(frame);
 }
 
 test.use({ launchOptions: { ignoreDefaultArgs: ['--hide-scrollbars'], args: ['--disable-features=OverlayScrollbar'] } });
