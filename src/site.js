@@ -4,34 +4,11 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ------------------------------------------------------------
-     SYS.01 — hero pipeline: leaks appear after a beat
-     ------------------------------------------------------------ */
-  function revealLeaks() {
-    var stages = Array.prototype.slice.call(document.querySelectorAll('.stage[data-leak]'));
-    if (!stages.length) return;
-
-    var delay = reduceMotion ? 0 : 850;
-    var stagger = reduceMotion ? 0 : 400;
-
-    setTimeout(function () {
-      stages.forEach(function (el, i) {
-        setTimeout(function () { el.classList.add('is-leaking'); }, i * stagger);
-      });
-      var bar = document.querySelector('.pipeline__bar-item--right');
-      if (bar) bar.textContent = 'STATUS: LEAKING';
-    }, delay);
-  }
-
-  /* ------------------------------------------------------------
      Header: scroll progress + section status
      ------------------------------------------------------------ */
   var progressBar = document.getElementById('progressBar');
   var navStatus = document.getElementById('navStatus');
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
-  var sectionIndex = {
-    hero: '01', leaks: '02', systems: '03',
-    work: '04', clients: '05', 'gray-papers': '06', method: '07', diagnose: '08'
-  };
   var ticking = false;
 
   function onScroll() {
@@ -53,7 +30,7 @@
         if (!current || current.id === 'hero') {
           navStatus.textContent = 'SYSTEM ONLINE';
         } else {
-          navStatus.textContent = 'SECTION ' + (sectionIndex[current.id] || '—') + ' / 08';
+          navStatus.textContent = 'SECTION ' + String(sections.indexOf(current) + 1).padStart(2, '0') + ' / ' + String(sections.length).padStart(2, '0');
         }
       }
       ticking = false;
@@ -62,24 +39,6 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
-
-  /* ------------------------------------------------------------
-     Scroll reveal (architecture rows)
-     ------------------------------------------------------------ */
-  var revealEls = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-in'); });
-  }
 
   /* ------------------------------------------------------------
      Qualification modal (diagnostic flow)
@@ -177,7 +136,7 @@
   }
 
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-  document.querySelectorAll('.pipeline, .patch__col, .client-card, .protocol__step, .operator-mark, .paper-card').forEach(function (surface) {
+  document.querySelectorAll('.client-card, .protocol__step, .paper-card').forEach(function (surface) {
     surface.classList.add('pointer-surface');
     surface.addEventListener('pointermove', function (event) {
       if (reduceMotion || !finePointer.matches) return;
@@ -187,12 +146,4 @@
     });
   });
 
-  /* ------------------------------------------------------------
-     Init
-     ------------------------------------------------------------ */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', revealLeaks);
-  } else {
-    revealLeaks();
-  }
 })();

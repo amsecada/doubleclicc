@@ -72,3 +72,34 @@ test('without JavaScript the static banner link is usable', async ({ browser, ba
   await expect(page.locator('#player-fallback a')).toHaveAttribute('href', 'https://google.com/');
   await context.close();
 });
+
+test('retained navigation, dialogs, and client carousel remain usable', async ({ page }) => {
+  await page.goto('./');
+  await page.getByRole('link', { name: 'Work', exact: true }).click();
+  await expect(page).toHaveURL(/#work$/);
+  await expect(page.locator('#navStatus')).toHaveText('SECTION 02 / 06');
+  await page.getByRole('link', { name: 'Clients', exact: true }).click();
+  await expect(page).toHaveURL(/#clients$/);
+  await expect(page.locator('#clientCarousel')).toHaveClass(/is-ready/);
+  await expect(page.locator('#clientCarousel .client-grid:not([aria-hidden])')).toHaveCount(1);
+  await page.getByRole('link', { name: 'Gray papers', exact: true }).click();
+  await page.locator('[data-open-paper]').first().click();
+  await expect(page.locator('dialog[open]')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('dialog[open]')).toHaveCount(0);
+  await page.locator('#siteHeader [data-open-diagnostic]').click();
+  await expect(page.locator('#diagnosticModal')).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#diagnosticModal')).not.toBeVisible();
+});
+
+for (const width of [360, 390, 1440]) {
+  test(`page and player fit a ${width}px viewport`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('./');
+    await expect(page.getByRole('button', { name: 'Pause animation' })).toBeVisible();
+    const canvas = await page.locator('.doubleclicc-player__canvas').boundingBox();
+    expect(canvas!.width / canvas!.height).toBeCloseTo(width < 768 ? 3 / 4 : 16 / 9, 2);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  });
+}
