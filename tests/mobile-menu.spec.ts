@@ -1,4 +1,17 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
+
+async function expectFrozen(page: Page) {
+  const canvas = page.locator('.doubleclicc-player__canvas');
+  const frame = await canvas.screenshot();
+  await page.waitForTimeout(300);
+  expect(await canvas.screenshot()).toEqual(frame);
+}
+
+async function expectPlaying(page: Page) {
+  const canvas = page.locator('.doubleclicc-player__canvas');
+  const frame = await canvas.screenshot();
+  await expect.poll(async () => !(await canvas.screenshot()).equals(frame)).toBe(true);
+}
 
 test.use({ launchOptions: { ignoreDefaultArgs: ['--hide-scrollbars'], args: ['--disable-features=OverlayScrollbar'] } });
 
@@ -6,7 +19,7 @@ for (const width of [360, 390]) {
   test(`mobile menu overlays without moving the banner at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
     await page.goto('./');
-    await expect(page.getByRole('button', { name: 'Pause animation', exact: true })).toBeVisible();
+    await expectPlaying(page);
     const toggle = page.getByRole('button', { name: 'Open menu', exact: true });
     await expect(toggle).toBeVisible();
     const header = await page.locator('#siteHeader').boundingBox();
@@ -18,10 +31,11 @@ for (const width of [360, 390]) {
     await expect(page.getByRole('button', { name: 'Close menu', exact: true })).toHaveAttribute('aria-expanded', 'true');
     await expect(page.getByRole('link', { name: 'Work', exact: true })).toBeVisible();
     expect(await page.locator('.hero__banner').boundingBox()).toEqual(before);
-    await expect(page.getByRole('button', { name: 'Play animation', exact: true })).toBeDisabled();
+    await expect(page.locator('.doubleclicc-player__canvas').getByText('01 / FIND THE GAPS', { exact: true })).toBeVisible();
+    await expectFrozen(page);
     await page.keyboard.press('Escape');
     await expect(toggle).toBeFocused();
-    await expect(page.getByRole('button', { name: 'Pause animation', exact: true })).toBeVisible();
+    await expectPlaying(page);
     await toggle.click();
     await page.locator('.menu-backdrop').click({ position: { x: 10, y: 600 } });
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');
@@ -29,22 +43,16 @@ for (const width of [360, 390]) {
   });
 }
 
-test('mobile menu preserves a manual pause and closes on navigation', async ({ page }) => {
+test('mobile menu closes on navigation and playback resumes', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('./');
-  await page.getByRole('button', { name: 'Pause animation', exact: true }).click();
+  await expectPlaying(page);
   await page.getByRole('button', { name: 'Open menu', exact: true }).click();
   await page.getByRole('link', { name: 'Work', exact: true }).click();
   await expect(page).toHaveURL(/#work$/);
   await expect(page.getByRole('button', { name: 'Open menu', exact: true })).toHaveAttribute('aria-expanded', 'false');
-  await expect(page.getByRole('button', { name: 'Play animation', exact: true })).toBeEnabled();
   await page.getByRole('link', { name: 'Doubleclicc home' }).click();
-  await page.getByRole('button', { name: 'Open menu', exact: true }).click();
-  await page.getByRole('button', { name: 'Close menu', exact: true }).click();
-  const canvas = page.locator('.doubleclicc-player__canvas');
-  const frame = await canvas.screenshot();
-  await page.waitForTimeout(250);
-  expect(await canvas.screenshot()).toEqual(frame);
+  await expectPlaying(page);
 });
 
 test('mobile menu works in landscape and resets on desktop resize', async ({ page }) => {
@@ -57,7 +65,7 @@ test('mobile menu works in landscape and resets on desktop resize', async ({ pag
   await expect(page.locator('#menuToggle')).not.toBeVisible();
   await expect(page.locator('.menu-backdrop')).not.toBeVisible();
   await expect(page.getByRole('link', { name: 'Work', exact: true })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Pause animation', exact: true })).toBeVisible();
+  await expectPlaying(page);
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(page.getByRole('button', { name: 'Open menu', exact: true })).toHaveAttribute('aria-expanded', 'false');
 });
@@ -85,16 +93,17 @@ test('menu open before player load prevents autoplay until dismissal', async ({ 
   await page.goto('./', { waitUntil: 'domcontentloaded' });
   await page.getByRole('button', { name: 'Open menu', exact: true }).click();
   release();
-  await expect(page.getByRole('button', { name: 'Play animation', exact: true })).toBeDisabled();
+  await expect(page.locator('.doubleclicc-player__canvas').getByText('01 / FIND THE GAPS', { exact: true })).toBeVisible();
+  await expectFrozen(page);
   await page.keyboard.press('Escape');
-  await expect(page.getByRole('button', { name: 'Pause animation', exact: true })).toBeVisible();
+  await expectPlaying(page);
 });
 
 test.describe('classic scrollbars', () => {
   test('opening the menu preserves the player width with a visible scrollbar', async ({ page }) => {
     await page.setViewportSize({ width: 900, height: 844 });
     await page.goto('./');
-    await expect(page.getByRole('button', { name: 'Pause animation', exact: true })).toBeVisible();
+    await expectPlaying(page);
     expect(await page.evaluate(() => innerWidth - document.documentElement.clientWidth)).toBeGreaterThan(0);
     const canvas = page.locator('.doubleclicc-player__canvas');
     const before = await canvas.boundingBox();

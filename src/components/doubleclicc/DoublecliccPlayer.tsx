@@ -41,15 +41,11 @@ const Fallback = () => (
       boxSizing: "border-box",
     }}
   >
-    <div style={{ letterSpacing: 3, fontSize: "clamp(12px, 2.5vw, 20px)" }}>
-      <span style={{ color: "#8cf5b3" }}>// </span>DOUBLECLICC
-    </div>
     <div
       style={{
         fontSize: "clamp(32px, 6vw, 96px)",
         lineHeight: 1.08,
         fontWeight: 600,
-        marginTop: 24,
       }}
     >
       Less busywork.
@@ -73,8 +69,6 @@ export const DoublecliccPlayer = ({
   const playerRef = useRef<PlayerRef>(null);
   const [containerWidth, setContainerWidth] = useState<number | null>(null);
   const [reducedMotion, setReducedMotion] = useState(true);
-  const [paused, setPaused] = useState(false);
-  const [userPaused, setUserPaused] = useState(false);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
@@ -103,16 +97,9 @@ export const DoublecliccPlayer = ({
   useEffect(() => {
     const player = playerRef.current;
     if (!animate || !player) return;
-    const onPlay = () => setPaused(false);
-    const onPause = () => setPaused(true);
     const onError = () => setFailed(true);
-    setPaused(!player.isPlaying());
-    player.addEventListener("play", onPlay);
-    player.addEventListener("pause", onPause);
     player.addEventListener("error", onError);
     return () => {
-      player.removeEventListener("play", onPlay);
-      player.removeEventListener("pause", onPause);
       player.removeEventListener("error", onError);
     };
   }, [animate]);
@@ -120,9 +107,9 @@ export const DoublecliccPlayer = ({
   useEffect(() => {
     const player = playerRef.current;
     if (!animate || !player) return;
-    if (playbackSuspended || userPaused) player.pause();
+    if (playbackSuspended) player.pause();
     else player.play();
-  }, [animate, playbackSuspended, userPaused]);
+  }, [animate, playbackSuspended]);
 
   return (
     <div
@@ -158,7 +145,7 @@ export const DoublecliccPlayer = ({
               compositionHeight={mobile ? 1440 : 1080}
               fps={30}
               durationInFrames={750}
-              autoPlay={!playbackSuspended && !userPaused}
+              autoPlay={!playbackSuspended}
               loop
               initiallyMuted
               controls={false}
@@ -195,10 +182,9 @@ export const DoublecliccPlayer = ({
       <div
         style={{
           display: "flex",
-          flexWrap: "wrap",
           gap: 12,
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "center",
           padding: "16px 6% 24px",
         }}
       >
@@ -211,20 +197,6 @@ export const DoublecliccPlayer = ({
             {ctaLabel} <span aria-hidden="true">↗</span>
           </a>
         ) : null}
-        {animate && (
-          <button
-            type="button"
-            style={{
-              ...controlStyle,
-              borderColor: "#e9e5dd30",
-              marginLeft: "auto",
-            }}
-            disabled={playbackSuspended}
-            onClick={() => setUserPaused(value => !value)}
-          >
-            {paused ? "Play animation" : "Pause animation"}
-          </button>
-        )}
       </div>
     </div>
   );
