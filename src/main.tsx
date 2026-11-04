@@ -1,6 +1,5 @@
 import { useEffect, useSyncExternalStore } from 'react';
 import { createRoot } from 'react-dom/client';
-import { DIAGNOSTIC_HREF } from './config';
 import './site.js';
 import { initMobileMenu, isMobileMenuOpen, subscribeMobileMenu } from './mobile-menu';
 
@@ -14,7 +13,7 @@ if (mount) {
     function HeroPlayer() {
       const menuOpen = useSyncExternalStore(subscribeMobileMenu, isMobileMenuOpen);
       useEffect(() => { if (fallback) fallback.hidden = true; }, []);
-      return <DoublecliccPlayer diagnosticHref={DIAGNOSTIC_HREF} playbackSuspended={menuOpen} />;
+      return <DoublecliccPlayer onDiagnostic={() => document.querySelector<HTMLButtonElement>('#siteHeader [data-open-diagnostic]')?.click()} playbackSuspended={menuOpen} />;
     }
     createRoot(mount, {
       onUncaughtError: () => {

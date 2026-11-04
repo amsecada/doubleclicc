@@ -24,21 +24,14 @@ test('built page loads player and local fonts', async ({ page, request }) => {
 
 for (const name of ['Run Revenue Diagnostic — animated banner', 'Run Revenue Diagnostic']) {
   for (const action of ['click', 'keyboard']) {
-    test(`${name} opens Google in a new tab by ${action}`, async ({ page, context }) => {
-      await context.route('https://google.com/**', route => route.fulfill({ body: 'Navigation reached Google' }));
+    test(`${name} opens the consultation form by ${action}`, async ({ page }) => {
       await page.goto('./');
-      const link = page.locator('#doubleclicc-player').getByRole('link', { name, exact: true });
-      await expect(link).toHaveAttribute('href', 'https://google.com/');
-      await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+      const link = page.locator('#doubleclicc-player').getByRole('button', { name, exact: true });
       const originalURL = page.url();
-      const popupPromise = page.waitForEvent('popup');
       if (action === 'click') await link.click();
       else { await link.focus(); await page.keyboard.press('Enter'); }
-      const popup = await popupPromise;
-      await expect(popup).toHaveURL('https://google.com/');
-      expect(await popup.evaluate(() => window.opener)).toBeNull();
+      await expect(page.locator('#diagnosticModal')).toBeVisible();
       await expect(page).toHaveURL(originalURL);
-      await popup.close();
     });
   }
 }
@@ -48,9 +41,9 @@ test('hero keeps a centered CTA without manual playback controls', async ({ page
   await page.goto('./');
   const host = page.locator('#doubleclicc-player');
   await expect(host.getByText('01 / FIND THE GAPS', { exact: true })).toBeVisible();
-  await expect(host.getByRole('button')).toHaveCount(0);
+  await expect(host.getByRole('button')).toHaveCount(2);
   const hero = await host.boundingBox();
-  const cta = await host.getByRole('link', { name: 'Run Revenue Diagnostic', exact: true }).boundingBox();
+  const cta = await host.getByRole('button', { name: 'Run Revenue Diagnostic', exact: true }).boundingBox();
   expect(cta!.x + cta!.width / 2).toBeCloseTo(hero!.x + hero!.width / 2, 0);
 });
 
@@ -59,7 +52,7 @@ test('reduced motion keeps the static message and diagnostic links', async ({ pa
   await page.goto('./');
   await expect(page.locator('#doubleclicc-player').getByText('Less busywork.')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Pause animation' })).toHaveCount(0);
-  await expect(page.locator('#doubleclicc-player a')).toHaveCount(2);
+  await expect(page.locator('#doubleclicc-player button')).toHaveCount(2);
 });
 
 test('failed scene load keeps a readable fallback and link', async ({ page }) => {
@@ -68,17 +61,15 @@ test('failed scene load keeps a readable fallback and link', async ({ page }) =>
   await page.goto('./');
   await expect(page.locator('#doubleclicc-player').getByText('Less busywork.')).toBeVisible();
   await expect.poll(() => sceneBlocked).toBe(true);
-  await expect(page.locator('#doubleclicc-player').getByRole('link', { name: 'Run Revenue Diagnostic', exact: true })).toHaveAttribute('href', 'https://google.com/');
+  await page.locator('#doubleclicc-player').getByRole('button', { name: 'Run Revenue Diagnostic', exact: true }).click();
+  await expect(page.locator('#diagnosticModal')).toBeVisible();
 });
 
-test('without JavaScript the static banner link is usable', async ({ browser, baseURL }) => {
+test('without JavaScript the static banner explains how to send a request', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto(baseURL!);
-  await expect(page.locator('#player-fallback a')).toBeVisible();
-  await expect(page.locator('#player-fallback a')).toHaveAttribute('href', 'https://google.com/');
-  await expect(page.locator('#player-fallback a')).toHaveAttribute('target', '_blank');
-  await expect(page.locator('#player-fallback a')).toHaveAttribute('rel', 'noopener noreferrer');
+  await expect(page.getByText('Please enable JavaScript to send a consultation request.')).toBeVisible();
   await context.close();
 });
 

@@ -306,6 +306,19 @@ body {
 .modal__title { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 600; letter-spacing: -0.03em; margin-top: 14px; }
 .modal__sub { color: var(--ink-70); margin-top: 10px; max-width: 42ch; }
 
+.consult-modal { max-width: 760px; max-height: calc(100dvh - 32px); overflow: hidden; }
+.consult-modal .modal__panel { padding: 34px 24px 18px; height: min(920px, calc(100dvh - 32px)); box-sizing: border-box; display: flex; flex-direction: column; overflow: hidden; }
+.consult-modal .modal__head { padding: 0 12px 24px; flex-shrink: 0; }
+.consult-embed { flex: 1; min-height: 0; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 8px; background: #fff; }
+.consult-embed iframe { display: block; border: 0; width: 100%; height: 100%; color-scheme: light; }
+.consult-fallback { flex-shrink: 0; text-align: center; font-size: 0.75rem; color: var(--ink-50); margin-top: 14px; }
+.consult-fallback a { color: var(--ink-70); text-underline-offset: 4px; }
+@media (max-width: 600px) {
+  .consult-modal { width: calc(100% - 16px); }
+  .consult-modal .modal__panel { padding: 36px 8px 16px; }
+  .consult-modal .modal__head { padding: 0 10px 20px; }
+}
+
 .modal__form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 28px; }
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field--full { grid-column: 1 / -1; }

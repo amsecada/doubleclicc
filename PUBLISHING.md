@@ -53,20 +53,20 @@ browser review separately verifies Google's actual page opens.
   historical checksums. The checksums describe the original handoff, not the
   modified integrated files.
 
-The banner and its persistent button use `DIAGNOSTIC_HREF` in `src/config.ts`,
-currently `https://google.com/` for the proof. Vite also inserts this destination
-into the static fallback link, so visitors without JavaScript reach the same
-place. All hero links open in a new tab and preserve the current page.
-Change the configuration value and rebuild to update both.
+The banner, its persistent button, and the static loading fallback open the
+consultation modal. Visitors without JavaScript see a message explaining it is
+needed to submit a request.
 At viewport widths up to 960px, the menu overlays the page and temporarily
 pauses the player. Closing it resumes playback. The hero has no manual playback
 controls; the diagnostic CTA is centered below the animation. Escape, outside taps,
 navigation, and resizing to desktop dismiss the menu; without JavaScript the
 navigation stays visible. Header clearance is measured, and scrollbar space is
 reserved so opening the menu cannot resize the animation.
-The header and final diagnostic buttons still open the existing demo form;
-it displays success without transmitting data. Connect a real submission
-service in a separately scoped change before treating it as lead capture.
+The diagnostic buttons open the published Google Form inside a branded dialog.
+Google handles validation, submission, and confirmation, and writes responses to
+whatever Sheet the form owner has linked. No Apps Script or website credentials
+are needed. The embed loads on first opening and retains entries while the dialog
+is closed. A direct responder link is available beneath it.
 
 ## Release flow
 
