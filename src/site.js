@@ -44,11 +44,11 @@
      Qualification modal (diagnostic flow)
      ------------------------------------------------------------ */
   var modal = document.getElementById('diagnosticModal');
-  var form = document.getElementById('diagForm');
-  var done = document.getElementById('diagDone');
+  var consultFrame = document.getElementById('consultForm');
 
   function openModal() {
     if (!modal) return;
+    if (consultFrame && !consultFrame.hasAttribute('src')) consultFrame.src = consultFrame.dataset.src;
     if (typeof modal.showModal === 'function') {
       if (!modal.open) modal.showModal();
     } else {
@@ -67,26 +67,6 @@
   Array.prototype.forEach.call(document.querySelectorAll('[data-close-diagnostic]'), function (b) {
     b.addEventListener('click', closeModal);
   });
-
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (form.checkValidity()) {
-        form.hidden = true;
-        if (done) done.hidden = false;
-      } else {
-        form.reportValidity();
-      }
-    });
-  }
-
-  if (modal && form) {
-    modal.addEventListener('close', function () {
-      form.hidden = false;
-      if (done) done.hidden = true;
-      form.reset();
-    });
-  }
 
   document.querySelectorAll('[data-open-paper]').forEach(function (button) {
     var paper = document.getElementById(button.dataset.openPaper);
