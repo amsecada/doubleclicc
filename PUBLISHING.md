@@ -38,6 +38,12 @@ Browser checks run against the production output on port 4173, including real
 player playback, banner/button navigation, menu-triggered pause/resume, reduced motion,
 failed loading, JavaScript disabled, retained dialogs, and phone widths.
 The navigation tests also check duplicate IDs, fragments, and source assets.
+Gray Paper checks cover matching card/article titles, opening all three readers
+on phone and desktop widths, keyboard dismissal, focus return, and scroll reset
+when reopening. Production checks catch failed local assets and uncaught runtime
+errors, and verify the client marquee stays accessible with reduced motion.
+These checks run automatically in both pull-request validation and release
+validation through the existing browser suite.
 Google requests in automated tests are intercepted after navigation; the local
 browser review separately verifies Google's actual page opens.
 
