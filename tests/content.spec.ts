@@ -19,6 +19,9 @@ for (const width of [390, 1440]) {
       await dialog.locator('.modal__panel').evaluate(el => { el.scrollTop = el.scrollHeight; });
       await page.keyboard.press('Escape');
       await expect(dialog).not.toBeVisible();
+      // The native dialog hides before its queued close handler finishes.
+      // Wait for cleanup before reopening, so it cannot steal focus later.
+      await expect(page.locator('body')).not.toHaveClass(/paper-is-open/);
       await expect(card).toBeFocused();
       await card.press('Enter');
       await expect(dialog).toBeVisible();
