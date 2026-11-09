@@ -65,3 +65,24 @@ test('client marquee exposes one list and supports scrolling with reduced motion
   await page.keyboard.press('ArrowRight');
   await expect.poll(() => carousel.evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
 });
+
+for (const width of [320, 390, 768, 1440]) {
+  test(`papers stay readable with reachable close controls at ${width}px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto('./');
+    for (const id of ['paper-01', 'paper-02']) {
+      await page.locator(`[data-open-paper="${id}"]`).click();
+      const dialog = page.locator(`#${id}`);
+      const reader = dialog.locator('.paper-reader');
+      const close = dialog.getByRole('button', { name: 'Close gray paper' });
+      await reader.evaluate(el => { el.scrollTop = el.scrollHeight / 2; });
+      const box = (await close.boundingBox())!;
+      expect(box.y).toBeGreaterThanOrEqual(0);
+      expect(box.y + box.height).toBeLessThan(844);
+      expect(box.height).toBeGreaterThanOrEqual(44);
+      expect(await reader.evaluate(el => el.scrollWidth <= el.clientWidth)).toBe(true);
+      await close.click();
+      await expect(dialog).not.toBeVisible();
+    }
+  });
+}
