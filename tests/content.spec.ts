@@ -70,7 +70,7 @@ for (const width of [320, 390, 768, 1440]) {
   test(`papers stay readable with reachable close controls at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
     await page.goto('./');
-    for (const id of ['paper-01', 'paper-02']) {
+    for (const id of ['paper-01', 'paper-02', 'paper-03']) {
       await page.locator(`[data-open-paper="${id}"]`).click();
       const dialog = page.locator(`#${id}`);
       const reader = dialog.locator('.paper-reader');
