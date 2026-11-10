@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "project": "Unfold",
+  "owner": "Doubleclicc website",
+  "status": "ready-for-website-review",
+  "video": {
+    "src": "unfold-showcase.mp4",
+    "mimeType": "video/mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "durationSeconds": 24,
+    "frames": 720,
+    "codec": "h264",
+    "pixelFormat": "yuv420p",
+    "colorSpace": "bt709",
+    "audio": false,
+    "bytes": 1814953,
+    "sha256": "4a4ab1da19fe70d9a31c982e6a9dfabd0f1afa649ce407454a7b2b9a9d2f6ea4"
+  },
+  "poster": {
+    "src": "poster.webp",
+    "alt": "Native layered Unfold wordmark and three colorful story cards from the film opening.",
+    "width": 1920,
+    "height": 1080,
+    "png": "poster.png"
+  },
+  "reducedMotionFallback": "poster.webp",
+  "copy": "copy.json",
+  "stills": [
+    {
+      "id": "unfold-01",
+      "order": 1,
+      "title": "Unfold",
+      "alt": "Unfold wordmark, arrow and three colorful story cards.",
+      "width": 1920,
+      "height": 1080,
+      "src": "stills/unfold-01.webp",
+      "frame": 75
+    },
+    {
+      "id": "unfold-02",
+      "order": 2,
+      "title": "From content to story",
+      "alt": "Source strips resolve into a graphic story card.",
+      "width": 1920,
+      "height": 1080,
+      "src": "stills/unfold-02.webp",
+      "frame": 155
+    },
+    {
+      "id": "unfold-03",
+      "order": 3,
+      "title": "Visual voices",
+      "alt": "Three visual styles fan out across an ink background.",
+      "width": 1920,
+      "height": 1080,
+      "src": "stills/unfold-03.webp",
+      "frame": 310
+    },
+    {
+      "id": "unfold-04",
+      "order": 4,
+      "title": "Focused swipe",
+      "alt": "A large crisp card takes center focus while secondary cards recede and fade.",
+      "width": 1920,
+      "height": 1080,
+      "src": "stills/unfold-04.webp",
+      "frame": 402
+    },
+    {
+      "id": "unfold-05",
+      "order": 5,
+      "title": "Playback",
+      "alt": "A play symbol and orbit illustrate timed playback.",
+      "width": 1920,
+      "height": 1080,
+      "src": "stills/unfold-05.webp",
+      "frame": 540
+    },
+    {
+      "id": "unfold-06",
+      "order": 6,
+      "title": "Unfold brand reprise",
+      "alt": "The cards reassemble around the opening Unfold wordmark and arrow.",
+      "width": 1920,
+      "height": 1080,
+      "src": "stills/unfold-06.webp",
+      "frame": 700
+    }
+  ],
+  "sourceProvenance": "Native layered motion graphics recreated from accepted AI-generated artwork; promotional illustration, not an app screen recording.",
+  "playback": {
+    "autoplay": false,
+    "playsInline": true,
+    "controls": true,
+    "reducedMotion": "Show poster; only play on user request."
+  },
+  "source": {
+    "entry": "source/index.tsx",
+    "mainComposition": "UnfoldShowcase",
+    "sceneCompositions": [
+      "Opening",
+      "Transformation",
+      "VisualVoices",
+      "Swipe",
+      "Playback",
+      "Release"
+    ],
+    "readme": "source/README.md"
+  },
+  "revision": 2,
+  "verification": {
+    "technical": "passed",
+    "visual": "changed-scenes-inspected",
+    "browserPlayback": "passed-chromium-24-seconds",
+    "userAcceptance": "pending",
+    "record": "VERIFICATION.md"
+  }
+}

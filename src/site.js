@@ -88,6 +88,48 @@
     });
   });
 
+  var projectCarousel = document.getElementById('projectCarousel');
+  if (projectCarousel) {
+    var projectNavigation = document.querySelector('.project-navigation');
+    var projectPrevious = projectNavigation.querySelector('[data-project-prev]');
+    var projectNext = projectNavigation.querySelector('[data-project-next]');
+    projectNavigation.hidden = false;
+    function updateProjectNavigation() {
+      projectPrevious.disabled = projectCarousel.scrollLeft <= 1;
+      projectNext.disabled = projectCarousel.scrollLeft >= projectCarousel.scrollWidth - projectCarousel.clientWidth - 1;
+    }
+    function scrollProjects(direction) {
+      var cards = projectCarousel.querySelectorAll('.project-card');
+      var step = cards[1].offsetLeft - cards[0].offsetLeft;
+      projectCarousel.scrollBy({ left: direction * step, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    }
+    projectPrevious.addEventListener('click', function () { scrollProjects(-1); });
+    projectNext.addEventListener('click', function () { scrollProjects(1); });
+    projectCarousel.addEventListener('scroll', updateProjectNavigation, { passive: true });
+    new ResizeObserver(updateProjectNavigation).observe(projectCarousel);
+    updateProjectNavigation();
+  }
+
+  var unfold = document.getElementById('unfold-showcase');
+  var unfoldTrigger = document.querySelector('[data-open-unfold]');
+  if (unfold && unfoldTrigger) {
+    var unfoldVideo = unfold.querySelector('video');
+    unfoldTrigger.addEventListener('click', function () {
+      unfold.showModal();
+      unfold.querySelector('.modal__panel').scrollTop = 0;
+      document.body.classList.add('showcase-is-open');
+    });
+    unfold.querySelector('[data-close-unfold]').addEventListener('click', function () { unfold.close(); });
+    unfold.addEventListener('click', function (event) {
+      if (event.target === unfold) unfold.close();
+    });
+    unfold.addEventListener('close', function () {
+      unfoldVideo.pause();
+      document.body.classList.remove('showcase-is-open');
+      unfoldTrigger.focus({ preventScroll: true });
+    });
+  }
+
   // Repeat the client strip once for a seamless loop; keep one accessible list.
   var clientCarousel = document.getElementById('clientCarousel');
   if (clientCarousel) {
