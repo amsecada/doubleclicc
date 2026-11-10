@@ -60,7 +60,7 @@
       </div>
 
       <div class="work-heading"><h2 class="h2">Less theory.<br /><span>More shipped.</span></h2></div>
-      <div class="project-grid">
+      <div class="project-grid" id="projectCarousel" role="region" aria-label="Deployment projects" tabindex="0">
         <a class="project-card project-card--syllabusy" href="https://syllabusyapp.onrender.com/" target="new" rel="noopener noreferrer" aria-label="Visit Syllabusy — invite-only pilot">
           <div class="project-art lesson-art" aria-hidden="true">
             <span class="art-label mono">01 / EDUCATION</span>
@@ -70,9 +70,48 @@
           </div>
           <div class="project-body"><span class="project-status mono">INVITE-ONLY PILOT</span><h3>Syllabusy <span aria-hidden="true">↗</span></h3><p>A 60-minute lesson plan in under 60 seconds. Built for K–5 teachers, prototyped for the University of Miami.</p><span class="project-link">Visit Syllabusy <span aria-hidden="true">→</span></span></div>
         </a>
+        <button class="project-card project-card--unfold" type="button" data-open-unfold aria-label="Watch the Unfold showcase" aria-haspopup="dialog" aria-controls="unfold-showcase">
+          <span class="project-art unfold-art" aria-hidden="true">
+            <span class="art-label mono">02 / TEXT TO VIDEO</span>
+            <svg class="unfold-graphic" xmlns="http://www.w3.org/2000/svg" width="400" height="310" viewBox="0 0 400 310" fill="none" focusable="false">
+              <path fill="#fff0d8" d="M0 0h400v310H0z" />
+              <g class="unfold-trails">
+                <g opacity=".6" transform="rotate(-8 200 155)">
+                  <path stroke="#ff633b" stroke-width="2" d="M45 70h230M125 253h200" />
+                  <path stroke="#e5fc44" stroke-width="1.5" d="M90 77h230M160 260h190" />
+                  <path stroke="#b9a2ee" stroke-width="1.5" d="M155 84h180M205 267h130" />
+                </g>
+              </g>
+              <g class="unfold-story unfold-story--lilac">
+                <g transform="translate(290 160) rotate(14)">
+                  <rect x="-51" y="-85" width="102" height="170" rx="8" fill="#b9a2ee" />
+                  <g class="unfold-asterisk" fill="#242424">
+                    <path d="M-6-39H6v78H-6zM-39-6h78V6h-78z" />
+                    <path d="M-6-39H6v78H-6zM-39-6h78V6h-78z" transform="rotate(45)" />
+                  </g>
+                </g>
+              </g>
+              <g class="unfold-story unfold-story--lime">
+                <g transform="translate(205 149) rotate(5)">
+                  <rect x="-51" y="-85" width="102" height="170" rx="8" fill="#e5fc44" />
+                  <g stroke="#242424" stroke-width="3"><circle r="38" /><circle r="26" /><circle r="14" /></g>
+                </g>
+              </g>
+              <g class="unfold-story unfold-story--orange">
+                <g transform="translate(117 165) rotate(-9)">
+                  <rect x="-51" y="-85" width="102" height="170" rx="8" fill="#ff633b" />
+                  <circle r="38" fill="#242424" />
+                </g>
+              </g>
+              <g class="unfold-arrow"><path d="M31 224h35v-12l22 18-22 18v-12H31z" fill="#242424" transform="rotate(-32 60 230)" /></g>
+            </svg>
+            <span class="art-caption mono">Text in. Visual stories out.</span>
+          </span>
+          <span class="project-body"><span class="project-status mono">Private prototype</span><span class="project-title">Unfold <span aria-hidden="true">↗</span></span><span class="project-description">Unfold turns articles and pasted text into visual stories you can swipe, play, and export.</span><span class="project-link">Watch the showcase <span aria-hidden="true">→</span></span></span>
+        </button>
         <a class="project-card project-card--smoke" href="https://smokesignals-wgp5.onrender.com/" target="new" rel="noopener noreferrer" aria-label="Visit Smokesignal">
           <div class="project-art signal-art" aria-hidden="true">
-            <span class="art-label mono">02 / SOCIAL ANALYTICS</span>
+            <span class="art-label mono">03 / SOCIAL ANALYTICS</span>
             <div class="signal-rings"><i></i><i></i><i></i><span class="signal-core">S</span></div>
             <span class="signal-note signal-note--one">Something’s off.</span><span class="signal-note signal-note--two"><i></i> Check the conversation.</span>
             <span class="art-caption mono">Catch it before it escalates.</span>
@@ -81,12 +120,19 @@
         </a>
         <a class="project-card project-card--sherwood" href="https://amsecada.github.io/sherwood/" target="new" rel="noopener noreferrer" aria-label="Visit Sherwood">
           <div class="project-art map-art" aria-hidden="true">
-            <span class="art-label mono">03 / PROPERTY INSIGHTS</span>
+            <span class="art-label mono">04 / PROPERTY INSIGHTS</span>
             <div class="map-blocks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="map-pin"><span>⌂</span></div><span class="map-tag">Know your home turf.</span>
             <span class="art-caption mono">Chicago / Block by block</span>
           </div>
           <div class="project-body"><span class="project-status mono">LIVE / CHICAGOLAND</span><h3>Sherwood <span aria-hidden="true">↗</span></h3><p>Your home turf against the king’s tax bill. Compare property assessments and connect with local expertise.</p><span class="project-link">Visit Sherwood <span aria-hidden="true">→</span></span></div>
         </a>
+      </div>
+      <div class="project-navigation" hidden>
+        <span class="mono">Scroll to explore <span aria-hidden="true">↔</span></span>
+        <div class="project-controls" role="group" aria-label="Deployment navigation">
+          <button type="button" data-project-prev aria-label="Previous deployments" aria-controls="projectCarousel" disabled>←</button>
+          <button type="button" data-project-next aria-label="Next deployments" aria-controls="projectCarousel">→</button>
+        </div>
       </div>
     </section>
     <section class="section clients-section" id="clients">
@@ -208,6 +254,28 @@
       <button class="footer__cta text-link" data-open-diagnostic>Run diagnostic <span aria-hidden="true">→</span></button>
     </div>
   </footer>
+
+<dialog class="modal unfold-modal" id="unfold-showcase" aria-labelledby="unfold-title" aria-describedby="unfold-description">
+  <article class="modal__panel unfold-showcase">
+    <header class="unfold-showcase__toolbar">
+      <span class="mono">Unfold / Showcase</span>
+      <button type="button" class="modal__close mono" data-close-unfold autofocus aria-label="Close Unfold showcase">Close <span aria-hidden="true">✕</span></button>
+    </header>
+    <div class="unfold-showcase__copy">
+      <p class="project-status mono">Private prototype</p>
+      <h2 class="modal__title" id="unfold-title"><span class="sr-only">Unfold — </span>Text in.<br />Visual stories out.</h2>
+      <p id="unfold-description">Unfold turns articles and pasted text into visual stories you can swipe, play, and export.</p>
+    </div>
+    <figure class="unfold-showcase__film">
+      <video controls playsinline preload="none" poster="deployments/unfold/poster.webp" aria-label="Watch the Unfold showcase" aria-describedby="unfold-video-description">
+        <source src="deployments/unfold/unfold-showcase.mp4" type="video/mp4" />
+        Your browser does not support embedded video. Use the video link below.
+      </video>
+      <figcaption><span>24 seconds / Silent film</span><a href="deployments/unfold/unfold-showcase.mp4" target="_blank" rel="noopener">Open video <span aria-hidden="true">↗</span></a></figcaption>
+      <p class="sr-only" id="unfold-video-description">A 24-second layered animation: source text becomes cards, styles change, the active card pops into focus as others recede, playback begins, and the Unfold identity reassembles.</p>
+    </figure>
+  </article>
+</dialog>
 
 <dialog class="modal paper-modal" id="paper-01" aria-labelledby="paper-title-01">
   <article class="modal__panel paper-reader">

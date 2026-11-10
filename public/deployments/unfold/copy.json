@@ -1,0 +1,15 @@
+{
+  "project": "Unfold",
+  "headline": "Text in. Visual stories out.",
+  "description": "Unfold turns articles and pasted text into visual stories you can swipe, play, and export.",
+  "statusLabel": "Private prototype",
+  "ctaLabel": "Watch the showcase",
+  "videoAlternativeText": "A 24-second layered animation: source text becomes cards, styles change, the active card pops into focus as others recede, playback begins, and the Unfold identity reassembles.",
+  "media": {
+    "video": "unfold-showcase.mp4",
+    "videoStatus": "rendered-verified-review-pending",
+    "poster": "poster.webp",
+    "reducedMotionFallback": "poster.webp"
+  },
+  "publishingNote": "The graphic art direction is approved. The core-product redesign is queued as FEAT-020; the promotional film is not a recording of that future interface."
+}

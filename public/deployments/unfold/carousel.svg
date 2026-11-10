@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="310" viewBox="0 0 400 310" fill="none">
+  <title>Unfold story cards</title>
+  <desc>Orange, lime and lilac story cards with a circle, concentric rings and an asterisk, adapted from the Unfold film's native shapes.</desc>
+  <path fill="#fff0d8" d="M0 0h400v310H0z"/>
+  <g opacity=".6" transform="rotate(-8 200 155)">
+    <path stroke="#ff633b" stroke-width="2" d="M45 70h230M125 253h200"/>
+    <path stroke="#e5fc44" stroke-width="1.5" d="M90 77h230M160 260h190"/>
+    <path stroke="#b9a2ee" stroke-width="1.5" d="M155 84h180M205 267h130"/>
+  </g>
+  <g transform="translate(290 160) rotate(14)">
+    <rect x="-51" y="-85" width="102" height="170" rx="8" fill="#b9a2ee"/>
+    <g fill="#242424">
+      <path d="M-6-39H6v78H-6zM-39-6h78V6h-78z"/>
+      <path d="M-6-39H6v78H-6zM-39-6h78V6h-78z" transform="rotate(45)"/>
+    </g>
+  </g>
+  <g transform="translate(205 149) rotate(5)">
+    <rect x="-51" y="-85" width="102" height="170" rx="8" fill="#e5fc44"/>
+    <g stroke="#242424" stroke-width="3"><circle r="38"/><circle r="26"/><circle r="14"/></g>
+  </g>
+  <g transform="translate(117 165) rotate(-9)">
+    <rect x="-51" y="-85" width="102" height="170" rx="8" fill="#ff633b"/>
+    <circle r="38" fill="#242424"/>
+  </g>
+  <path d="M31 224h35v-12l22 18-22 18v-12H31z" fill="#242424" transform="rotate(-32 60 230)"/>
+</svg>
