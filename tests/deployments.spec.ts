@@ -7,7 +7,8 @@ for (const width of [390, 768, 1440]) {
     await page.goto('./');
     const carousel = page.getByRole('region', { name: 'Deployment projects' });
     const cards = carousel.locator('.project-card');
-    await expect(cards.locator('h3, .project-title')).toHaveText(['Syllabusy ↗', 'Unfold ↗', 'Smokesignal ↗', 'Sherwood ↗']);
+    await expect(cards.locator('h3, .project-title')).toHaveText(['Syllabusy ↗', 'Streamdust ↗', 'Smokesignal ↗', 'Sherwood ↗', 'Unfold ↗']);
+    await expect(cards.nth(1)).toHaveAttribute('href', 'https://streamdust.onrender.com/login');
     const previous = page.getByRole('button', { name: 'Previous deployments' });
     const next = page.getByRole('button', { name: 'Next deployments' });
     await expect(previous).toBeDisabled();
